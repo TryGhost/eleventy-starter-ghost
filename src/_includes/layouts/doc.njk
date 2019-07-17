@@ -1,0 +1,8 @@
+{% extends 'layouts/default.njk' %}
+
+{% set title = doc.title %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  {{ content | safe }}
+{% endblock %}

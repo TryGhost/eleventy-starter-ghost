@@ -1,0 +1,17 @@
+{% extends 'layouts/default.njk' %}
+
+{% set title = tag.name %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  {{ content | safe }}
+  {% if tag.posts %}
+  <ul>
+    {% for post in tag.posts %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No posts to be found</p>
+  {% endif %}
+{% endblock %}

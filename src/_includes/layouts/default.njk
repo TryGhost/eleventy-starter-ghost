@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% if title %}{{ title }} - {% endif %}{{ site.title }}</title>
+  {% if site.icon %}
+    <link rel="shortcut icon" type="image/png" href="{{ site.icon }}"/>
+  {% endif %}
+
+  <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+  <link href="https://unpkg.com/sanitize.css/typography.css" rel="stylesheet" />
+  <link href="https://unpkg.com/sanitize.css/page.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+
+  {{ site.codeinjection_head }}
+  {% if codeinjection_head %}{{ codeinjection_head }}{% endif %}
+</head>
+<body>
+  <a href="{{ site.url }}">
+    <img src="{{ site.logo }}" alt="{{ site.title }}">
+  </a>
+  <nav>
+    {% for item in site.navigation %}
+      <a href="{{ item.url }}">{{ item.label }}</a>
+    {% endfor %}
+  </nav>
+  <nav>
+    <a href="https://facebook.com/{{ site.facebook }}">fb</a>
+    <a href="https://twitter.com/{{ site.twitter }}">tw</a>
+  </nav>
+  {% block content %}
+  {% endblock content %}
+
+  {{ site.codeinjection_foot }}
+  {% if codeinjection_foot %}{{ codeinjection_foot }}{% endif %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'layouts/default.njk' %}
+
+{% set title = author.name %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  <img src="{{ author.profile_image }}" alt="">
+  {{ content | safe }}
+  {% if author.posts %}
+    <ul>
+      {% for post in author.posts %}
+        <li><a href="/{{ post.slug }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts to be found</p>
+  {% endif %}
+{% endblock %}

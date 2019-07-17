@@ -1,0 +1,14 @@
+{% extends 'layouts/default.njk' %}
+
+{% set title = post.title %}
+{% set codeinjection_head = post.codeinjection_head %}
+{% set codeinjection_foot = post.codeinjection_foot %}
+
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  <img src="{{ post.feature_image }}" alt="">
+  <span>by <a href="/{{ post.primary_author.slug }}">{{ post.primary_author.name }}</a></span>
+  <time>{{ post.published_at.toUTCString() }}</time>
+  {{ content | safe }}
+{% endblock %}
