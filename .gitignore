@@ -1,9 +1,16 @@
+# dependencies installed by npm
+/node_modules
+
+# build artefacts
+/dist
+
+# secrets and errors
+.env
+/yarn-error.log
 *.log
 npm-debug.*
-*.scssc
-*.log
-*.swp
+
+# macOS related files
 .DS_Store
-.sass-cache
-node_modules
-dist
+.AppleDouble
+.LSOverride
