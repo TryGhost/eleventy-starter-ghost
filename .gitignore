@@ -6,7 +6,7 @@
 /src/_includes/css
 
 # secrets and errors
-.env
+# .env
 /yarn-error.log
 *.log
 npm-debug.*

@@ -160,7 +160,7 @@ module.exports = function(config) {
       input: 'src',
       output: 'dist'
     },
-    templateFormats: ['css', 'njk', 'md'],
+    templateFormats: ['css', 'njk', 'md', 'txt'],
     htmlTemplateEngine: 'njk',
     markdownTemplateEngine: 'njk',
     passthroughFileCopy: true
