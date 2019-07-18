@@ -38,6 +38,8 @@ module.exports = function(config) {
     return new Date(dateObj).toISOString().split('T')[0];
   });
 
+  config.setUseGitIgnore(false);
+
   // Get all pages, called 'docs' to prevent
   // conflicting the eleventy page object
   config.addCollection('docs', async function(collection) {
