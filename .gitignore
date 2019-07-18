@@ -3,6 +3,7 @@
 
 # build artefacts
 /dist
+/src/_includes/css
 
 # secrets and errors
 .env

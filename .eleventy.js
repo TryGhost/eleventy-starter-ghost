@@ -2,7 +2,9 @@ require('dotenv').config();
 
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
 const ghostContentAPI = require('@tryghost/content-api');
-const pluginRss = require('@11ty/eleventy-plugin-rss');
+const pluginRSS = require('@11ty/eleventy-plugin-rss');
+const cleanCSS = require('clean-css');
+const localImages = require('eleventy-plugin-local-images');
 
 // Init Ghost API
 const api = new ghostContentAPI({
@@ -19,7 +21,18 @@ const stripDomain = url => {
 
 module.exports = function(config) {
   config.addTransform('htmlmin', htmlMinTransform);
-  config.addPlugin(pluginRss);
+  config.addPlugin(pluginRSS);
+
+  config.addPlugin(localImages, {
+    distPath: 'dist',
+    assetPath: '/assets/images',
+    selector: 'img',
+    verbose: false
+  });
+
+  config.addFilter('cssmin', function(code) {
+    return new cleanCSS({}).minify(code).styles;
+  });
 
   config.addFilter('htmlDateString', dateObj => {
     return new Date(dateObj).toISOString().split('T')[0];
