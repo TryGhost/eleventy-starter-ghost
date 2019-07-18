@@ -3,6 +3,7 @@
 {% set title = site.description %}
 
 {% block content %}
+
   <h1>{{ site.title }}</h1>
 
   <h2>Posts</h2>
@@ -10,6 +11,7 @@
     {% for post in collections.posts.slice(0,4) %}
       <li>
          <a href="{{ post.url }}">{{ post.title }}</a>
+         {% if post.featured %}<mark>Featured</mark>{% endif %}
          {% if post.custom_excerpt %}<p>{{ post.custom_excerpt }}</p>{% endif %}
       </li>
     {% endfor %}
@@ -21,6 +23,8 @@
     {% for doc in collections.docs %}
       <li>
          <a href="{{ doc.url }}">{{ doc.title }}</a>
+         {% if doc.featured %}<mark>Featured</mark>{% endif %}
+         {% if doc.custom_excerpt %}<p>{{ doc.custom_excerpt }}</p>{% endif %}
       </li>
     {% endfor %}
   </ul>
@@ -28,7 +32,7 @@
   <h2>Authors</h2>
   <ul>
     {% for author in collections.authors %}
-      <li>
+      <li id="{{ author.slug }}">
          <a href="{{ author.url }}">{{ author.name }}</a>
       </li>
     {% endfor %}

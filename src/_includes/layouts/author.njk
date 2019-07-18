@@ -1,15 +1,25 @@
 {% extends 'layouts/default.njk' %}
 
 {% set title = author.name %}
+{% set cover_image = post.cover_image %}
 
 {% block content %}
   <h1>{{ title }}</h1>
-  <img src="{{ author.profile_image }}" alt="">
+  {% if author.profile_image %}
+    <img src="{{ author.profile_image }}" alt="{{ title }}">
+  {% endif %}
   {{ content | safe }}
+  <ul>
+    {% if author.website %}<li>Website: <a href="{{ author.website }}">{{ author.website }}</a></li>{% endif %}
+    {% if author.location %}<li>Location: {{ author.location }}</li>{% endif %}
+    {% if author.twitter %}<li><a href="{{ author.twitter }}">Twitter</a></li>{% endif %}
+    {% if author.facebook %}<li><a href="{{ author.facebook }}">Facebook</a></li>{% endif %}
+  </ul>
+  <h3>Posts by {{ author.name }}</h3>
   {% if author.posts %}
     <ul>
       {% for post in author.posts %}
-        <li><a href="/{{ post.slug }}">{{ post.title }}</a></li>
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
       {% endfor %}
     </ul>
   {% else %}

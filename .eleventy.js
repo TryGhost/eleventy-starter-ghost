@@ -20,9 +20,13 @@ const stripDomain = url => {
 };
 
 module.exports = function(config) {
+  // Minify HTML
   config.addTransform('htmlmin', htmlMinTransform);
+
+  // Assist RSS feed template
   config.addPlugin(pluginRSS);
 
+  // Copy images over from Ghost
   config.addPlugin(localImages, {
     distPath: 'dist',
     assetPath: '/assets/images',
@@ -30,14 +34,17 @@ module.exports = function(config) {
     verbose: false
   });
 
+  // Inline CSS
   config.addFilter('cssmin', function(code) {
     return new cleanCSS({}).minify(code).styles;
   });
 
+  // Date formatting filter
   config.addFilter('htmlDateString', dateObj => {
     return new Date(dateObj).toISOString().split('T')[0];
   });
 
+  // Don't ignore the same files ignored in the git repo
   config.setUseGitIgnore(false);
 
   // Get all pages, called 'docs' to prevent
@@ -45,6 +52,7 @@ module.exports = function(config) {
   config.addCollection('docs', async function(collection) {
     collection = await api.pages
       .browse({
+        include: 'authors',
         limit: 'all'
       })
       .catch(err => {
@@ -53,8 +61,14 @@ module.exports = function(config) {
 
     collection.map(doc => {
       doc.url = stripDomain(doc.url);
+
+      // Convert publish date into a Date object
+      doc.published_at = new Date(doc.published_at);
       return doc;
     });
+
+    // Bring featured page to the top of the list
+    collection.sort((doc, nextDoc) => nextDoc.featured - doc.featured);
 
     return collection;
   });
@@ -72,11 +86,15 @@ module.exports = function(config) {
 
     collection.map(post => {
       post.url = stripDomain(post.url);
+      post.primary_author.url = stripDomain(post.primary_author.url);
 
       // Convert publish date into a Date object
       post.published_at = new Date(post.published_at);
       return post;
     });
+
+    // Bring featured post to the top of the list
+    collection.sort((post, nextPost) => nextPost.featured - post.featured);
 
     return collection;
   });
@@ -160,6 +178,8 @@ module.exports = function(config) {
       input: 'src',
       output: 'dist'
     },
+
+    // Files read by Eleventy, add as needed
     templateFormats: ['css', 'njk', 'md', 'txt'],
     htmlTemplateEngine: 'njk',
     markdownTemplateEngine: 'njk',

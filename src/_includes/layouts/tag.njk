@@ -1,8 +1,10 @@
 {% extends 'layouts/default.njk' %}
 
 {% set title = tag.name %}
+{% set cover_image = doc.feature_image %}
 
 {% block content %}
+
   <h1>{{ title }}</h1>
   {{ content | safe }}
   {% if tag.posts %}

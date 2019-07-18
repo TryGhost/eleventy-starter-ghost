@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{% if title %}{{ title }} - {% endif %}{{ site.title }}</title>
+  <title>{{ title + ' - ' if title }}{{ site.title }}</title>
   {% if site.icon %}
     <link rel="shortcut icon" type="image/png" href="{{ site.icon }}"/>
   {% endif %}
@@ -14,26 +14,37 @@
 
   <script>document.documentElement.classList.remove('no-js');</script>
 
-  {{ site.codeinjection_head }}
-  {% if codeinjection_head %}{{ codeinjection_head }}{% endif %}
+  {{ site.codeinjection_head | safe if site.codeinjection_head }}
+  {{ codeinjection_head | safe if codeinjection_head }}
 </head>
 <body>
-  <a href="{{ site.url }}">
+  {% if cover_image %}
+    <img class="feature" src="{{ cover_image }}" alt="Cover image">
+  {% elseif site.cover_image %}
+    <img class="feature" src="{{ site.cover_image }}" alt="Cover image">
+  {% endif %}
+
+  <a class="logo" href="{{ site.url }}">
     <img src="{{ site.logo }}" alt="{{ site.title }}">
   </a>
-  <nav>
-    {% for item in site.navigation %}
-      <a href="{{ item.url }}">{{ item.label }}</a>
-    {% endfor %}
-  </nav>
-  <nav>
-    <a href="https://facebook.com/{{ site.facebook }}">fb</a>
-    <a href="https://twitter.com/{{ site.twitter }}">tw</a>
-  </nav>
-  {% block content %}
-  {% endblock content %}
 
-  {{ site.codeinjection_foot }}
-  {% if codeinjection_foot %}{{ codeinjection_foot }}{% endif %}
+  <main>
+    <nav>
+      {% for item in site.navigation %}
+        <a href="{{ item.url }}">{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+
+    <nav>
+      {% if site.facebook %}<a href="https://facebook.com/{{ site.facebook }}">fb</a>{% endif %}
+      {% if site.twitter %}<a href="https://twitter.com/{{ site.twitter }}">tw</a>{% endif %}
+    </nav>
+
+    {% block content %}
+    {% endblock content %}
+  </main>
+
+  {{ site.codeinjection_foot | safe if site.codeinjection_foot }}
+  {{ codeinjection_foot | safe if codeinjection_foot }}
 </body>
 </html>

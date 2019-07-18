@@ -8,4 +8,4 @@ layout: 'layouts/author.njk'
 permalink: '{{ author.url }}'
 ---
 
-{{ author.bio | safe }}
+{{ author.bio | safe if author.bio else "Bio not found" }}

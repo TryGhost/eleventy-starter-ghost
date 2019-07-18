@@ -8,8 +8,4 @@ layout: 'layouts/tag.njk'
 permalink: '{{ tag.url }}'
 ---
 
-{% if tag.description %}
-{{ tag.description | safe }}
-{% else %}
-{{ tag.count.posts }} posts
-{% endif %}
+{{ tag.description | safe if tag.description else tag.count.posts + " posts" }}
