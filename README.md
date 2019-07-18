@@ -1,14 +1,3 @@
-# eleventy-starter-ghost
-
-A starter template to build websites with Ghost &amp; Eleventy
-
-## Installation
-
-1. Fork the repo
-2. Amend the `.env` to your own details
-3. run `npm install`
-4. run `npm start`
-
 # Eleventy Starter Ghost
 
 A starter template to build completely static websites with [Ghost](https://ghost.org) & [Eleventy](https://www.11ty.io)
@@ -36,7 +25,7 @@ npm install
 Start the development server
 
 ```bash
-npm start
+npm run start
 ```
 
 You now have a completely static site pulling content from Ghost running as a headless CMS.
@@ -64,10 +53,7 @@ You can disable the default Ghost Handlebars Theme front-end by enabling the `Ma
 # Extra options
 
 ```bash
-# Run a production build, locally
-npm run start
-
-# Serve a production build, locally
+# Build the site locally
 npm run build
 ```
 

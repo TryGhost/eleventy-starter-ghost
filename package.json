@@ -7,7 +7,7 @@
     "start": "npm run dev",
     "dev": "gulp build & gulp watch & cross-env ELEVENTY_ENV=dev eleventy --serve",
     "build": "gulp build & cross-env ELEVENTY_ENV=prod eleventy",
-    "test": "npm build"
+    "test": "npm run build"
   },
   "repository": {
     "type": "git",
