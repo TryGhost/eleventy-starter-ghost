@@ -154,7 +154,7 @@ module.exports = function(config) {
     // Get all posts with their tags attached
     const posts = await api.posts
       .browse({
-        include: 'tags',
+        include: 'tags,authors',
         limit: 'all'
       })
       .catch(err => {
