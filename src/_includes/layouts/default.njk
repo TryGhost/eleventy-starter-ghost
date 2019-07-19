@@ -28,6 +28,8 @@
     {% endblock content %}
   </main>
 
+  {% include "partials/footer.njk" %}
+
   {{ site.codeinjection_foot | safe if site.codeinjection_foot }}
   {{ codeinjection_foot | safe if codeinjection_foot }}
 </body>

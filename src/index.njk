@@ -1,7 +1,7 @@
 ---
 pagination:
   data: collections.posts
-  size: 5
+  size: 7
   alias: posts
 ---
 
@@ -13,7 +13,7 @@ pagination:
 {% block content %}
   <ul class="post-list">
     {% for post in posts %}
-      <li class="post-list__item">
+      <li class="post-list__item{{ "  post-list__item--featured" if post.featured }}">
           {{ card({
             url: post.url,
             image: post.feature_image,
@@ -24,16 +24,18 @@ pagination:
     {% endfor %}
   </ul>
 
-  <nav class="pagination">
-    {% if page.permalink != pagination.previousPageHref %}
-      <a class="button" href="{{ pagination.previousPageHref }}">Prev page</a>
-    {% else %}
-      <span class="pagination__inactive">Prev page</span>
-    {% endif %}
-    {% if page.permalink != pagination.nextPageHref %}
-      <a class="button" href="{{ pagination.nextPageHref }}">Next page</a>
-    {% else %}
-      <span class="pagination__inactive">Next page</span>
-    {% endif %}
-  </nav>
+  {% if pagination.previousPageHref and pagination.nextPageHref %}
+    <nav class="pagination">
+      {% if page.permalink != pagination.previousPageHref %}
+        <a class="button" href="{{ pagination.previousPageHref }}">Prev page</a>
+      {% else %}
+        <span class="pagination__inactive">Prev page</span>
+      {% endif %}
+      {% if page.permalink != pagination.nextPageHref %}
+        <a class="button" href="{{ pagination.nextPageHref }}">Next page</a>
+      {% else %}
+        <span class="pagination__inactive">Next page</span>
+        {% endif %}
+    </nav>
+  {% endif %}
 {% endblock%}

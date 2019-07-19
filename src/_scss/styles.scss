@@ -42,8 +42,9 @@ img {
   }
 }
 
-// Headers
-.header {
+// Headers and footer
+.header,
+.footer {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, auto);
@@ -58,10 +59,11 @@ img {
     color: inherit;
   }
   &__logo,
-  &__social-navigation,
+  &__navigation,
   &__content,
   &__avatar,
   &__intro,
+  &__colophon,
   .navigation {
     grid-column: 1 / -1;
     grid-row: 1 / 2;
@@ -71,7 +73,7 @@ img {
     justify-self: start;
     max-width: 6rem;
   }
-  &__social-navigation {
+  &__navigation {
     justify-self: end;
     display: flex;
     align-items: center;
@@ -136,8 +138,10 @@ img {
 }
 
 .navigation-item {
-  + .navigation-item {
-    margin-left: 0.6rem;
+  margin-bottom: 0.65rem;
+  margin-right: 0.6rem;
+  &:last-of-type {
+    margin-right: 0;
   }
   a {
     text-decoration: none;
@@ -172,6 +176,12 @@ img {
   &__anchor {
     display: block;
     text-decoration: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  &__image {
+    align-self: stretch;
+    object-fit: cover;
   }
   &__header {
     padding: 0.8rem 1rem 1.2rem;
@@ -182,12 +192,15 @@ img {
 .post-list {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 1rem;
   margin: 2rem 0;
   padding: 0;
   &__item {
     display: flex;
+    &--featured {
+      grid-column: 1 / -1;
+    }
   }
 }
 
