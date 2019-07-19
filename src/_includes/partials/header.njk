@@ -1,34 +1,36 @@
 {% from "partials/icon.njk" import icon %}
 
 <header class="header"{% if site.cover_image %} style="background-image: url('{{ site.cover_image }}')"{% endif %}>
-  {% if site.logo %}
-    <a class="header__logo" href="{{ site.url }}">
-      <img src="{{ site.logo }}" alt="{{ site.title }}">
-    </a>
-  {% endif %}
-
-  <nav class="header__navigation">
-    {% if site.facebook %}
-      <a class="button  button--icon" href="https://facebook.com/{{ site.facebook }}">
-        {{ icon({ id: 'facebook' }) }}
+  <div class="header__container container">
+    {% if site.logo %}
+      <a class="header__logo" href="{{ site.url }}">
+        <img src="{{ site.logo }}" alt="{{ site.title }}">
       </a>
     {% endif %}
-    {% if site.twitter %}
-      <a class="button  button--icon" href="https://twitter.com/{{ site.twitter }}">
-        {{ icon({ id: 'twitter' }) }}
+
+    <nav class="header__social-navigation">
+      {% if site.facebook %}
+        <a class="button  button--icon" href="https://facebook.com/{{ site.facebook }}">
+          {{ icon({ id: 'facebook' }) }}
+        </a>
+      {% endif %}
+      {% if site.twitter %}
+        <a class="button  button--icon" href="https://twitter.com/{{ site.twitter }}">
+          {{ icon({ id: 'twitter' }) }}
+        </a>
+      {% endif %}
+      <a class="button  button--icon" href="/feed.xml">
+          {{ icon({ id: 'rss' }) }}
       </a>
+    </nav>
+
+    {% if page.url == '/' %}
+      <div class="header__content">
+        <h1>{{ site.title }}</h1>
+        <p>{{ site.description }}</p>
+      </div>
     {% endif %}
-    <a class="button  button--icon" href="/feed.xml">
-        {{ icon({ id: 'rss' }) }}
-    </a>
-  </nav>
 
-  {% if page.url == '/' %}
-    <div class="header__content container">
-      <h1>{{ site.title }}</h1>
-      <p>{{ site.description }}</p>
-    </div>
-  {% endif %}
-
-  {% include 'partials/navigation.njk' %}
+    {% include 'partials/navigation.njk' %}
+  </div>
 </header>

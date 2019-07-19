@@ -2,10 +2,19 @@
   <article class="card">
     <a class="card__anchor" href="{{ props.url }}">
       <img class="card__image" src="{{ props.image }}" alt="{{ props.title }}">
-      <header class="card__header">
-        <h2 class="card__title">{{ props.title }}</h2>
-        <p>{{ props.description }}</p>
-      </header>
+      <div class="card__content">
+        <header class="card__header">
+          <h2 class="card__title">{{ props.title }}</h2>
+          <p>{{ props.description }}</p>
+        </header>
+        {% if props.author %}
+          <footer class="card__footer">
+            <img class="card__author-avatar" src="{{ props.author.avatar }}" alt="{{ props.author.name }}">
+            <small class="card__byline">by {{ props.author.name }}</small>
+            <small class="card__read-time">{{ props.content | getReadingTime }} minute read</small>
+          </footer>
+        {% endif %}
+      </div>
     </a>
   </article>
 {% endmacro %}

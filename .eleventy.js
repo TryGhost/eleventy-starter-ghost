@@ -35,8 +35,14 @@ module.exports = function(config) {
   });
 
   // Inline CSS
-  config.addFilter('cssmin', function(code) {
+  config.addFilter('cssmin', code => {
     return new cleanCSS({}).minify(code).styles;
+  });
+
+  config.addFilter('getReadingTime', text => {
+    const wordsPerMinute = 200;
+    const numberOfWords = text.split(/\s/g).length;
+    return Math.ceil(numberOfWords / wordsPerMinute);
   });
 
   // Date formatting filter

@@ -18,7 +18,12 @@ pagination:
             url: post.url,
             image: post.feature_image,
             title: post.title,
-            description: post.excerpt
+            description: post.excerpt,
+            content: post.html | safe,
+            author: {
+              avatar: post.primary_author.profile_image,
+              name: post.primary_author.name
+            }
           }) }}
       </li>
     {% endfor %}

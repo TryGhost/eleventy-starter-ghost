@@ -11,11 +11,11 @@
 
   <div class="body-content">
     <h1>{{ title }}</h1>
-    <p>by <a href="{{ doc.primary_author.url }}">{{ doc.primary_author.name }}</a></p>
-    {% if doc.tags %}
-      <p>tagged: {% for tag in doc.tags %}<a href="{{ tag.url }}">{{ tag.name }}</a> {% endfor %}</p>
-    {% endif %}
-    <time>{{ doc.published_at.toUTCString() }}</time>
+    <small class="meta">
+      <span class="meta__byline">by <a href="{{ doc.primary_author.url }}">{{ doc.primary_author.name }}</a></span>
+      <span class="meta__tags">{% if doc.tags %}Tagged: {% for tag in doc.tags %}<a href="{{ tag.url }}">{{ tag.name }}</a> {% endfor %}{% endif %}</span>
+      <time class="meta__timestamp">Posted at {{ doc.published_at.toUTCString() }}</time>
+    </small>
     {{ content | safe }}
   </div>
 {% endblock %}

@@ -10,7 +10,7 @@
   {% endif %}
 
   {% if collections.docs %}
-    <ul class="navigation__list">
+    <ul class="navigation__list  navigation__list--pages">
       {% for doc in collections.docs %}
         <li class="navigation-item{{ "  navigation-item--active" if doc.url == page.url }}">
           <a class="button" href="{{ doc.url }}">
