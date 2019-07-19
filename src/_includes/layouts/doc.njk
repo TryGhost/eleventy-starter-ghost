@@ -3,11 +3,19 @@
 {% set title = doc.title %}
 {% set codeinjection_head = doc.codeinjection_head %}
 {% set codeinjection_foot = doc.codeinjection_foot %}
-{% set cover_image = doc.feature_image %}
 
 {% block content %}
-  <h1>{{ title }}</h1>
-  <span>by <a href="{{ doc.primary_author.url }}">{{ doc.primary_author.name }}</a></span>
-  <time>{{ doc.published_at.toUTCString() }}</time>
-  {{ content | safe }}
+  {% if doc.feature_image %}
+    <img class="feature-image" src="{{ doc.feature_image }}" alt="Feature image">
+  {% endif %}
+
+  <div class="body-content">
+    <h1>{{ title }}</h1>
+    <p>by <a href="{{ doc.primary_author.url }}">{{ doc.primary_author.name }}</a></p>
+    {% if doc.tags %}
+      <p>tagged: {% for tag in doc.tags %}<a href="{{ tag.url }}">{{ tag.name }}</a> {% endfor %}</p>
+    {% endif %}
+    <time>{{ doc.published_at.toUTCString() }}</time>
+    {{ content | safe }}
+  </div>
 {% endblock %}

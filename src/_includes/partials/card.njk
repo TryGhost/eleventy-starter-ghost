@@ -1,0 +1,11 @@
+{% macro card(props) %}
+  <article class="card">
+    <a class="card__anchor" href="{{ props.url }}">
+      <img src="{{ props.image }}" alt="{{ props.title }}">
+      <header class="card__header">
+        <h2 class="card__title">{{ props.title }}</h2>
+        <p>{{ props.description }}</p>
+      </header>
+    </a>
+  </article>
+{% endmacro %}

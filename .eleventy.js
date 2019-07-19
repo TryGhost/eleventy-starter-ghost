@@ -61,14 +61,12 @@ module.exports = function(config) {
 
     collection.map(doc => {
       doc.url = stripDomain(doc.url);
+      doc.primary_author.url = stripDomain(doc.primary_author.url);
 
       // Convert publish date into a Date object
       doc.published_at = new Date(doc.published_at);
       return doc;
     });
-
-    // Bring featured page to the top of the list
-    collection.sort((doc, nextDoc) => nextDoc.featured - doc.featured);
 
     return collection;
   });
@@ -87,6 +85,7 @@ module.exports = function(config) {
     collection.map(post => {
       post.url = stripDomain(post.url);
       post.primary_author.url = stripDomain(post.primary_author.url);
+      post.tags.map(tag => (tag.url = stripDomain(tag.url)));
 
       // Convert publish date into a Date object
       post.published_at = new Date(post.published_at);

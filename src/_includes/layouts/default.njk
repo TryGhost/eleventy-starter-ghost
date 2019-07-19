@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>{{ title + ' - ' if title }}{{ site.title }}</title>
+
   {% if site.icon %}
     <link rel="shortcut icon" type="image/png" href="{{ site.icon }}"/>
   {% endif %}
@@ -18,28 +20,10 @@
   {{ codeinjection_head | safe if codeinjection_head }}
 </head>
 <body>
-  {% if cover_image %}
-    <img class="feature" src="{{ cover_image }}" alt="Cover image">
-  {% elseif site.cover_image %}
-    <img class="feature" src="{{ site.cover_image }}" alt="Cover image">
-  {% endif %}
+  {% include "partials/icons.njk" %}
+  {% include "partials/header.njk" %}
 
-  <a class="logo" href="{{ site.url }}">
-    <img src="{{ site.logo }}" alt="{{ site.title }}">
-  </a>
-
-  <main>
-    <nav>
-      {% for item in site.navigation %}
-        <a href="{{ item.url }}">{{ item.label }}</a>
-      {% endfor %}
-    </nav>
-
-    <nav>
-      {% if site.facebook %}<a href="https://facebook.com/{{ site.facebook }}">fb</a>{% endif %}
-      {% if site.twitter %}<a href="https://twitter.com/{{ site.twitter }}">tw</a>{% endif %}
-    </nav>
-
+  <main class="container">
     {% block content %}
     {% endblock content %}
   </main>

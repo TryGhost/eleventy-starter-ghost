@@ -1,18 +1,29 @@
 {% extends 'layouts/default.njk' %}
+{% from "partials/secondary-header.njk" import header %}
+{% from "partials/card.njk" import card %}
 
 {% set title = tag.name %}
-{% set cover_image = doc.feature_image %}
 
 {% block content %}
+  {{ header({
+    feature_image: tag.feature_image,
+    title: tag.name,
+    description: content | safe
+  }) }}
 
-  <h1>{{ title }}</h1>
-  {{ content | safe }}
   {% if tag.posts %}
-  <ul>
-    {% for post in tag.posts %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+    <ul class="post-list">
+      {% for post in tag.posts %}
+        <li class="post-list__item">
+            {{ card({
+              url: post.url,
+              image: post.feature_image,
+              title: post.title,
+              description: post.excerpt
+            }) }}
+        </li>
+      {% endfor %}
+    </ul>
   {% else %}
     <p>No posts to be found</p>
   {% endif %}

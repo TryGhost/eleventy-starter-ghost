@@ -1,50 +1,39 @@
-{% extends 'layouts/default.njk' %}
+---
+pagination:
+  data: collections.posts
+  size: 5
+  alias: posts
+---
 
-{% set title = site.description %}
+{% extends 'layouts/default.njk' %}
+{% from "partials/card.njk" import card %}
+
+{% set title = "Posts" %}
 
 {% block content %}
-
-  <h1>{{ site.title }}</h1>
-
-  <h2>Posts</h2>
-  <ul>
-    {% for post in collections.posts.slice(0,4) %}
-      <li>
-         <a href="{{ post.url }}">{{ post.title }}</a>
-         {% if post.featured %}<mark>Featured</mark>{% endif %}
-         {% if post.custom_excerpt %}<p>{{ post.custom_excerpt }}</p>{% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-  <a href="/blog">View all posts</a>
-
-  <h2>Pages</h2>
-  <ul>
-    {% for doc in collections.docs %}
-      <li>
-         <a href="{{ doc.url }}">{{ doc.title }}</a>
-         {% if doc.featured %}<mark>Featured</mark>{% endif %}
-         {% if doc.custom_excerpt %}<p>{{ doc.custom_excerpt }}</p>{% endif %}
+  <ul class="post-list">
+    {% for post in posts %}
+      <li class="post-list__item">
+          {{ card({
+            url: post.url,
+            image: post.feature_image,
+            title: post.title,
+            description: post.excerpt
+          }) }}
       </li>
     {% endfor %}
   </ul>
 
-  <h2>Authors</h2>
-  <ul>
-    {% for author in collections.authors %}
-      <li id="{{ author.slug }}">
-         <a href="{{ author.url }}">{{ author.name }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <h2>Tags</h2>
-  <ul>
-    {% for tag in collections.tags %}
-      <li>
-         <a href="{{ tag.url }}">{{ tag.name }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-
+  <nav class="pagination">
+    {% if page.permalink != pagination.previousPageHref %}
+      <a class="button" href="{{ pagination.previousPageHref }}">Prev page</a>
+    {% else %}
+      <span class="pagination__inactive">Prev page</span>
+    {% endif %}
+    {% if page.permalink != pagination.nextPageHref %}
+      <a class="button" href="{{ pagination.nextPageHref }}">Next page</a>
+    {% else %}
+      <span class="pagination__inactive">Next page</span>
+    {% endif %}
+  </nav>
 {% endblock%}

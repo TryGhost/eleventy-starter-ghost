@@ -1,25 +1,30 @@
 {% extends 'layouts/default.njk' %}
+{% from "partials/secondary-header.njk" import header %}
+{% from "partials/card.njk" import card %}
 
 {% set title = author.name %}
-{% set cover_image = post.cover_image %}
 
 {% block content %}
-  <h1>{{ title }}</h1>
-  {% if author.profile_image %}
-    <img src="{{ author.profile_image }}" alt="{{ title }}">
-  {% endif %}
-  {{ content | safe }}
-  <ul>
-    {% if author.website %}<li>Website: <a href="{{ author.website }}">{{ author.website }}</a></li>{% endif %}
-    {% if author.location %}<li>Location: {{ author.location }}</li>{% endif %}
-    {% if author.twitter %}<li><a href="{{ author.twitter }}">Twitter</a></li>{% endif %}
-    {% if author.facebook %}<li><a href="{{ author.facebook }}">Facebook</a></li>{% endif %}
-  </ul>
-  <h3>Posts by {{ author.name }}</h3>
+  {{ header({
+    avatar: author.profile_image,
+    feature_image: author.cover_image,
+    title: author.name,
+    description: content | safe,
+    facebook: author.facebook,
+    twitter: author.twitter
+  }) }}
+
   {% if author.posts %}
-    <ul>
+    <ul class="post-list">
       {% for post in author.posts %}
-        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        <li class="post-list__item">
+            {{ card({
+              url: post.url,
+              image: post.feature_image,
+              title: post.title,
+              description: post.excerpt
+            }) }}
+        </li>
       {% endfor %}
     </ul>
   {% else %}
