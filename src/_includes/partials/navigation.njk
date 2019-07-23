@@ -14,7 +14,7 @@
       {% for doc in collections.docs %}
         <li class="navigation-item{{ "  navigation-item--active" if doc.url == page.url }}">
           <a class="button" href="{{ doc.url }}">
-            {{ doc.title }}
+            {{ doc.meta_title if doc.meta_title else doc.title }}
             {% if doc.featured %}
               <span class="navigation-item__feature-label">Featured</span>
             {% endif %}
