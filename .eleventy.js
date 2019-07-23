@@ -1,10 +1,12 @@
 require('dotenv').config();
 
-const htmlMinTransform = require('./src/transforms/html-min-transform.js');
-const ghostContentAPI = require('@tryghost/content-api');
-const pluginRSS = require('@11ty/eleventy-plugin-rss');
 const cleanCSS = require('clean-css');
+const fs = require('fs');
+const pluginRSS = require('@11ty/eleventy-plugin-rss');
 const localImages = require('eleventy-plugin-local-images');
+const ghostContentAPI = require('@tryghost/content-api');
+
+const htmlMinTransform = require('./src/transforms/html-min-transform.js');
 
 // Init Ghost API
 const api = new ghostContentAPI({
@@ -175,6 +177,21 @@ module.exports = function(config) {
     });
 
     return collection;
+  });
+
+  // Display 404 page in BrowserSnyc
+  config.setBrowserSyncConfig({
+    callbacks: {
+      ready: (err, bs) => {
+        const content_404 = fs.readFileSync('dist/404.html');
+
+        bs.addMiddleware('*', (req, res) => {
+          // Provides the 404 content without redirect.
+          res.write(content_404);
+          res.end();
+        });
+      }
+    }
   });
 
   // Eleventy configuration

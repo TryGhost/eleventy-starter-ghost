@@ -1,0 +1,15 @@
+---
+title: Error 404
+permalink: 404.html
+---
+{% extends 'layouts/default.njk' %}
+
+{% set codeinjection_head = doc.codeinjection_head %}
+{% set codeinjection_foot = doc.codeinjection_foot %}
+
+{% block content %}
+  <div class="body-content">
+    <h1>{{ title }}</h1>
+    <p>Page not found, <a href="/">return home</a> to start over.</p>
+  </div>
+{% endblock %}
