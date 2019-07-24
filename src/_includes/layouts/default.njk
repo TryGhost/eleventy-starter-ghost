@@ -1,7 +1,41 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang }}" class="no-js">
     <head>
-        {% include "partials/head-meta.njk" %}
+        <title>
+             {%- if title -%}
+             {{ title }} – {{ site.title }}
+            {%- else -%}
+             {{ site.title }} – {{ site.description }}
+            {%- endif -%}
+        </title>
+        <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+        <meta name="robots" content="index,follow">
+        <meta name="generator" content="Eleventy">
+
+        {%- block seo -%}
+            <!--Twitter Card-->
+            <meta name="twitter:card" content="summary">
+            <meta name="twitter:site" content="{{ site.twitter }}">
+            <meta name="twitter:creator" content="{{ site.twitter }}">
+            <meta name="twitter:url" content="{{ site.url + page.url }}">
+            <meta name="twitter:title" content="{{ title }}">
+            <meta name="twitter:description" content="{{ site.description }}">
+
+            <!--Schema-->
+            <link rel="author" href="{{ site.url }}">
+            <link rel="publisher" href="{{ site.url }}">
+            <meta itemprop="name" content="{{ title }}">
+            <meta itemprop="description" content="{{ site.description }}">
+
+            <!-- Facebook OpenGraph -->
+            <meta property="og:url" content="{{site.url + page.url}}">
+            <meta property="og:type" content="website">
+            <meta property="og:title" content="{{ title }}">
+            <meta property="og:description" content="{{ site.description }}">
+            <meta property="og:site_name" content="{{ site.title }}">
+            <meta property="og:locale" content="{{ site.lang }}">
+            <meta property="article:author" content="{{ site.url }}">
+        {%- endblock -%}
 
         {% set css %}{% include "css/styles.css" %}{% endset %}
         <style>{{ css | cssmin | safe }}</style>
