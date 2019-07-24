@@ -12,6 +12,10 @@
         <meta name="robots" content="index,follow">
         <meta name="generator" content="Eleventy">
 
+        {% if site.icon %}
+            <link rel="shortcut icon" type="image/png" href="{{ site.icon }}"/>	        {{ site.codeinjection_head | safe if site.codeinjection_head }}
+        {% endif %}
+
         {%- block seo -%}
             <!--Twitter Card-->
             <meta name="twitter:card" content="summary">
