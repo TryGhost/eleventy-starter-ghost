@@ -5,6 +5,7 @@ const fs = require("fs");
 const pluginRSS = require("@11ty/eleventy-plugin-rss");
 const localImages = require("eleventy-plugin-local-images");
 const ghostContentAPI = require("@tryghost/content-api");
+const lazyImages = require("eleventy-plugin-lazyimages");
 
 const htmlMinTransform = require("./src/transforms/html-min-transform.js");
 
@@ -33,6 +34,11 @@ module.exports = function(config) {
     assetPath: "/assets/images",
     selector: "img",
     verbose: false
+  });
+
+  // Apply performance attributes to images
+  config.addPlugin(lazyImages, {
+    cacheFile: ""
   });
 
   // Inline CSS
