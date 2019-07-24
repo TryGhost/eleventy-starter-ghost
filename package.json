@@ -5,8 +5,8 @@
   "main": ".eleventy.js",
   "scripts": {
     "start": "yarn run dev",
-    "dev": "gulp build & gulp watch & cross-env ELEVENTY_ENV=dev eleventy --serve",
-    "build": "gulp build & cross-env ELEVENTY_ENV=prod eleventy",
+    "dev": "cross-env ELEVENTY_ENV=dev eleventy --serve",
+    "build": "cross-env ELEVENTY_ENV=prod eleventy",
     "test": "yarn run build"
   },
   "repository": {
@@ -37,9 +37,6 @@
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "eleventy-plugin-local-images": "^0.2.0",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
-    "html-minifier": "^4.0.0",
-    "sanitize.css": "^11.0.0"
+    "html-minifier": "^4.0.0"
   }
 }

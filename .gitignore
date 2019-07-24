@@ -65,8 +65,6 @@ typings/
 
 # Eleventy Custom
 .cache/
-public
 yarn-error.log
 .netlify/
-/dist
-/src/_includes/css
+dist

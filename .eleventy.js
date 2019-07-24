@@ -1,55 +1,54 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const cleanCSS = require('clean-css');
-const fs = require('fs');
-const pluginRSS = require('@11ty/eleventy-plugin-rss');
-const localImages = require('eleventy-plugin-local-images');
-const ghostContentAPI = require('@tryghost/content-api');
+const cleanCSS = require("clean-css");
+const fs = require("fs");
+const pluginRSS = require("@11ty/eleventy-plugin-rss");
+const localImages = require("eleventy-plugin-local-images");
+const ghostContentAPI = require("@tryghost/content-api");
 
-const htmlMinTransform = require('./src/transforms/html-min-transform.js');
+const htmlMinTransform = require("./src/transforms/html-min-transform.js");
 
 // Init Ghost API
 const api = new ghostContentAPI({
-  url: process.env.GHOST_CONTENT_API_URL,
+  url: process.env.GHOST_API_URL,
   key: process.env.GHOST_CONTENT_API_KEY,
-  version: 'v2'
+  version: "v2"
 });
 
 // Strip Ghost domain from urls
-// if you're using a custom url for this static site
 const stripDomain = url => {
-  return url.replace(process.env.GHOST_CONTENT_API_URL, '');
+  return url.replace(process.env.GHOST_API_URL, "");
 };
 
 module.exports = function(config) {
   // Minify HTML
-  config.addTransform('htmlmin', htmlMinTransform);
+  config.addTransform("htmlmin", htmlMinTransform);
 
   // Assist RSS feed template
   config.addPlugin(pluginRSS);
 
   // Copy images over from Ghost
   config.addPlugin(localImages, {
-    distPath: 'dist',
-    assetPath: '/assets/images',
-    selector: 'img',
+    distPath: "dist",
+    assetPath: "/assets/images",
+    selector: "img",
     verbose: false
   });
 
   // Inline CSS
-  config.addFilter('cssmin', code => {
+  config.addFilter("cssmin", code => {
     return new cleanCSS({}).minify(code).styles;
   });
 
-  config.addFilter('getReadingTime', text => {
+  config.addFilter("getReadingTime", text => {
     const wordsPerMinute = 200;
     const numberOfWords = text.split(/\s/g).length;
     return Math.ceil(numberOfWords / wordsPerMinute);
   });
 
   // Date formatting filter
-  config.addFilter('htmlDateString', dateObj => {
-    return new Date(dateObj).toISOString().split('T')[0];
+  config.addFilter("htmlDateString", dateObj => {
+    return new Date(dateObj).toISOString().split("T")[0];
   });
 
   // Don't ignore the same files ignored in the git repo
@@ -57,11 +56,11 @@ module.exports = function(config) {
 
   // Get all pages, called 'docs' to prevent
   // conflicting the eleventy page object
-  config.addCollection('docs', async function(collection) {
+  config.addCollection("docs", async function(collection) {
     collection = await api.pages
       .browse({
-        include: 'authors',
-        limit: 'all'
+        include: "authors",
+        limit: "all"
       })
       .catch(err => {
         console.error(err);
@@ -80,11 +79,11 @@ module.exports = function(config) {
   });
 
   // Get all posts
-  config.addCollection('posts', async function(collection) {
+  config.addCollection("posts", async function(collection) {
     collection = await api.posts
       .browse({
-        include: 'tags,authors',
-        limit: 'all'
+        include: "tags,authors",
+        limit: "all"
       })
       .catch(err => {
         console.error(err);
@@ -107,10 +106,10 @@ module.exports = function(config) {
   });
 
   // Get all authors
-  config.addCollection('authors', async function(collection) {
+  config.addCollection("authors", async function(collection) {
     collection = await api.authors
       .browse({
-        limit: 'all'
+        limit: "all"
       })
       .catch(err => {
         console.error(err);
@@ -119,8 +118,8 @@ module.exports = function(config) {
     // Get all posts with their authors attached
     const posts = await api.posts
       .browse({
-        include: 'authors',
-        limit: 'all'
+        include: "authors",
+        limit: "all"
       })
       .catch(err => {
         console.error(err);
@@ -143,11 +142,11 @@ module.exports = function(config) {
   });
 
   // Get all tags
-  config.addCollection('tags', async function(collection) {
+  config.addCollection("tags", async function(collection) {
     collection = await api.tags
       .browse({
-        include: 'count.posts',
-        limit: 'all'
+        include: "count.posts",
+        limit: "all"
       })
       .catch(err => {
         console.error(err);
@@ -156,8 +155,8 @@ module.exports = function(config) {
     // Get all posts with their tags attached
     const posts = await api.posts
       .browse({
-        include: 'tags,authors',
-        limit: 'all'
+        include: "tags,authors",
+        limit: "all"
       })
       .catch(err => {
         console.error(err);
@@ -183,9 +182,9 @@ module.exports = function(config) {
   config.setBrowserSyncConfig({
     callbacks: {
       ready: (err, bs) => {
-        const content_404 = fs.readFileSync('dist/404.html');
+        const content_404 = fs.readFileSync("dist/404.html");
 
-        bs.addMiddleware('*', (req, res) => {
+        bs.addMiddleware("*", (req, res) => {
           // Provides the 404 content without redirect.
           res.write(content_404);
           res.end();
@@ -197,14 +196,14 @@ module.exports = function(config) {
   // Eleventy configuration
   return {
     dir: {
-      input: 'src',
-      output: 'dist'
+      input: "src",
+      output: "dist"
     },
 
     // Files read by Eleventy, add as needed
-    templateFormats: ['css', 'njk', 'md', 'txt'],
-    htmlTemplateEngine: 'njk',
-    markdownTemplateEngine: 'njk',
+    templateFormats: ["css", "njk", "md", "txt"],
+    htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
     passthroughFileCopy: true
   };
 };
