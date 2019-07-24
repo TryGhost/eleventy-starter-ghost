@@ -4,10 +4,10 @@
   "description": "A starter template to build websites with Ghost & Eleventy",
   "main": ".eleventy.js",
   "scripts": {
-    "start": "npm run dev",
+    "start": "yarn run dev",
     "dev": "gulp build & gulp watch & cross-env ELEVENTY_ENV=dev eleventy --serve",
     "build": "gulp build & cross-env ELEVENTY_ENV=prod eleventy",
-    "test": "npm run build"
+    "test": "yarn run build"
   },
   "repository": {
     "type": "git",

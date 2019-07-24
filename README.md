@@ -17,7 +17,7 @@ cd eleventy-starter-ghost
 Then install dependencies
 
 ```bash
-npm install
+yarn
 ```
 
 # Running
@@ -25,7 +25,7 @@ npm install
 Start the development server
 
 ```bash
-npm run start
+yarn start
 ```
 
 You now have a completely static site pulling content from Ghost running as a headless CMS.
@@ -54,7 +54,7 @@ You can disable the default Ghost Handlebars Theme front-end by enabling the `Ma
 
 ```bash
 # Build the site locally
-npm run build
+yarn build
 ```
 
 # Copyright & License
