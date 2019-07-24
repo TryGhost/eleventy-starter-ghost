@@ -1,20 +1,31 @@
-{% macro card(props) %}
-  <article class="card">
-    <a class="card__anchor" href="{{ props.url }}">
-      <img class="card__image" src="{{ props.image }}" alt="{{ props.title }}">
-      <div class="card__content">
-        <header class="card__header">
-          <h2 class="card__title">{{ props.title }}</h2>
-          <p>{{ props.description }}</p>
+{% macro card(post) %}
+    <a class="post-card{% if post.featured %}  post-card-featured{% endif %}" href="{{ post.url }}">
+        <header class="post-card-header">
+            <img class="post-card-image" src="{{ post.feature_image }}" alt="{{ post.title }}">
+            <div class="post-card-tags">
+                {% if post.tags %}{% for tag in post.tags %}{{ tag.name }} {% endfor %}{% endif %}
+            </div>
+            <h2 class="post-card-title">
+                {{ post.title }}
+            </h2>
         </header>
-        {% if props.author %}
-          <footer class="card__footer">
-            <img class="card__author-avatar" src="{{ props.author.avatar }}" alt="{{ props.author.name }}">
-            <small class="card__byline">by {{ props.author.name }}</small>
-            <small class="card__read-time">{{ props.content | getReadingTime }} minute read</small>
-          </footer>
-        {% endif %}
-      </div>
+        <section class="post-card-excerpt">
+            <p>{{ post.excerpt }}</p>
+        </section>
+        <footer class="post-card-footer">
+            <div class="post-card-footer-left">
+                <div class="post-card-avatar">
+                    <img
+                        class="author-profile-image"
+                        src="{{ post.primary_author.profile_image }}"
+                        alt="{{ post.primary_author.name }}"
+                    />
+                </div>
+                <span>{{ post.primary_author.name }}</span>
+            </div>
+            <div class="post-card-footer-right">
+                <div>{{ post.html | safe | getReadingTime }} min read</div>
+            </div>
+        </footer>
     </a>
-  </article>
 {% endmacro %}

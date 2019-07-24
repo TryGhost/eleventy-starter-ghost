@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang }}" class="no-js">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <head>
+        {% include "partials/head-meta.njk" %}
 
-  <title>{{ title + ' - ' if title }}{{ site.title }}</title>
+        {% set css %}{% include "css/styles.css" %}{% endset %}
+        <style>{{ css | cssmin | safe }}</style>
 
-  {% if site.icon %}
-    <link rel="shortcut icon" type="image/png" href="{{ site.icon }}"/>
-  {% endif %}
+        <script>document.documentElement.classList.remove('no-js');</script>
 
-  {% set css %}{% include "css/styles.css" %}{% endset %}
-  <style>{{ css | cssmin | safe }}</style>
+        {{ site.codeinjection_head | safe if site.codeinjection_head }}
+        {{ codeinjection_head | safe if codeinjection_head }}
+    </head>
+    <body>
+        {% include "partials/icons.njk" %}
+        <div class="viewport">
 
-  <script>document.documentElement.classList.remove('no-js');</script>
+            <div class="viewport-top">
+                {% include "partials/header.njk" %}
 
-  {{ site.codeinjection_head | safe if site.codeinjection_head }}
-  {{ codeinjection_head | safe if codeinjection_head }}
-</head>
-<body>
-  {% include "partials/icons.njk" %}
-  {% include "partials/header.njk" %}
+                <main class="site-main">
+                    <div class="container">
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+                </main>
+            </div>
 
-  <main class="main container">
-    {% block content %}
-    {% endblock content %}
-  </main>
+            <div class="viewport-bottom">
+                {% include "partials/footer.njk" %}
+            </div>
 
-  {% include "partials/footer.njk" %}
-
-  {{ site.codeinjection_foot | safe if site.codeinjection_foot }}
-  {{ codeinjection_foot | safe if codeinjection_foot }}
-</body>
+            {{ site.codeinjection_foot | safe if site.codeinjection_foot }}
+            {{ codeinjection_foot | safe if codeinjection_foot }}
+        </div>
+    </body>
 </html>

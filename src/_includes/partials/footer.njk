@@ -1,24 +1,21 @@
-<footer class="footer">
-  <div class="footer__container container">
-    <span class="footer__colophon">&copy; {{ site.title }} 2019</span>
-
-    <nav class="footer__navigation">
-      <a class="button  button--icon" href="/">
-        Latest posts
-      </a>
-      {% if site.facebook %}
-        <a class="button  button--icon" href="https://facebook.com/{{ site.facebook }}">
-          Facebook
-        </a>
-      {% endif %}
-      {% if site.twitter %}
-        <a class="button  button--icon" href="https://twitter.com/{{ site.twitter }}">
-          Twitter
-        </a>
-      {% endif %}
-      <a class="button  button--icon" href="/feed.xml">
-        Feed
-      </a>
-    </nav>
-  </div>
+<footer class="site-foot">
+    <div class="site-foot-nav container">
+        <div class="site-foot-nav-left">
+            <a aria-current="page" class="" href="/">
+                {{ site.title }}
+            </a> &copy; 2019 – Published with
+            <a class="site-foot-nav-item" href="https://ghost.org" target="_blank" rel="noopener noreferrer">
+                Ghost
+            </a>
+        </div>
+        {% if collections.docs %}
+            <div class="site-foot-nav-right">
+                {% for doc in collections.docs %}
+                    <a {% if page.url == doc.url %}aria-current="page"{% endif %}  class="site-foot-nav-item" href="{{ doc.url }}">
+                        {{ doc.meta_title if doc.meta_title else doc.title }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 </footer>

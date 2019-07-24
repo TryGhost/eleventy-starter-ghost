@@ -1,26 +1,20 @@
-<nav class="navigation">
-  {% if site.navigation %}
-    <ul class="navigation__list">
-      {% for item in site.navigation %}
-        <li class="navigation-item{{ "  navigation-item--active" if item.url == page.url }}">
-          <a href="{{ item.url }}">{{ item.label }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  {% if collections.docs %}
-    <ul class="navigation__list  navigation__list--pages">
-      {% for doc in collections.docs %}
-        <li class="navigation-item{{ "  navigation-item--active" if doc.url == page.url }}">
-          <a class="button" href="{{ doc.url }}">
-            {{ doc.meta_title if doc.meta_title else doc.title }}
-            {% if doc.featured %}
-              <span class="navigation-item__feature-label">Featured</span>
-            {% endif %}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+<nav class="site-nav">
+    {% if site.navigation %}
+        <div class="site-nav-left">
+            {% for item in site.navigation %}
+                <a {% if page.url == item.url %}aria-current="page"{% endif %} class="site-nav-item" href="{{ item.url }}">
+                    {{ item.label }}
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if collections.docs %}
+        <div class="site-nav-right">
+            {% for doc in collections.docs %}
+                <a {% if page.url == doc.url %}aria-current="page"{% endif %} class="site-nav-button{% if doc.featured %}  site-nav-button-featured{% endif %}" href="{{ doc.url }}">
+                    {{ doc.meta_title if doc.meta_title else doc.title }}
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
 </nav>

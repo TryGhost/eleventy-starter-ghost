@@ -1,0 +1,14 @@
+{% if pagination.previousPageHref and pagination.nextPageHref %}
+    <nav class="pagination" role="pagination">
+        {% if page.permalink != pagination.previousPageHref %}
+            <a href="{{ pagination.previousPageHref }}">Prev page</a>
+        {% else %}
+            <span>Prev page</span>
+        {% endif %}
+        {% if page.permalink != pagination.nextPageHref %}
+            <a href="{{ pagination.nextPageHref }}">Next page</a>
+        {% else %}
+            <span>Next page</span>
+        {% endif %}
+    </nav>
+{% endif %}

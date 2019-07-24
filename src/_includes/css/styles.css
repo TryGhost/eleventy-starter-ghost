@@ -666,6 +666,8 @@ h6 {
   padding-bottom: 20px;
   color: #fff;
   background: var(--color-base);
+  background-position: center;
+  background-size: cover;
 }
 
 .site-nav-item {
@@ -698,7 +700,6 @@ h6 {
 .site-mast-right {
   display: flex;
   align-items: center;
-  margin: 0 -10px 0 20px;
 }
 
 .site-mast-right .site-nav-item:last-child {
@@ -737,10 +738,6 @@ h6 {
 
 .site-nav-left {
   margin: 0 20px 0 -10px;
-}
-
-.site-nav-right {
-  margin: 0 -10px 0 20px;
 }
 
 .site-nav-button {
@@ -795,6 +792,11 @@ h6 {
   text-decoration: none;
 }
 
+.post-card-header {
+  display: flex;
+  flex-direction: column;
+}
+
 .post-card-tags {
   margin: 0 0 5px 0;
   font-size: 1.4rem;
@@ -818,6 +820,7 @@ h6 {
   height: 200px;
   background: var(--color-secondary) no-repeat center center;
   background-size: cover;
+  object-fit: cover;
 }
 
 .post-card-footer {

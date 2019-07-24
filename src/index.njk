@@ -11,36 +11,11 @@ pagination:
 {% set title = "Posts" %}
 
 {% block content %}
-  <ul class="post-list">
-    {% for post in posts %}
-      <li class="post-list__item{{ "  post-list__item--featured" if post.featured }}">
-          {{ card({
-            url: post.url,
-            image: post.feature_image,
-            title: post.title,
-            description: post.excerpt,
-            content: post.html | safe,
-            author: {
-              avatar: post.primary_author.profile_image,
-              name: post.primary_author.name
-            }
-          }) }}
-      </li>
-    {% endfor %}
-  </ul>
+    <section class="post-feed">
+        {% for post in posts %}
+            {{ card(post) }}
+        {% endfor %}
+    </section>
 
-  {% if pagination.previousPageHref and pagination.nextPageHref %}
-    <nav class="pagination">
-      {% if page.permalink != pagination.previousPageHref %}
-        <a class="button" href="{{ pagination.previousPageHref }}">Prev page</a>
-      {% else %}
-        <span class="pagination__inactive">Prev page</span>
-      {% endif %}
-      {% if page.permalink != pagination.nextPageHref %}
-        <a class="button" href="{{ pagination.nextPageHref }}">Next page</a>
-      {% else %}
-        <span class="pagination__inactive">Next page</span>
-        {% endif %}
-    </nav>
-  {% endif %}
+    {% include "partials/pagination.njk" %}
 {% endblock%}

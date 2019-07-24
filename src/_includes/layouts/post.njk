@@ -4,19 +4,18 @@
 {% set codeinjection_head = post.codeinjection_head %}
 {% set codeinjection_foot = post.codeinjection_foot %}
 
-
 {% block content %}
-  {% if post.feature_image %}
-    <img class="feature-image" src="{{ post.feature_image }}" alt="Feature image">
-  {% endif %}
-
-  <div class="body-content">
-    <h1>{{ title }}</h1>
-    <small class="meta">
-      <span class="meta__byline">by <a href="{{ post.primary_author.url }}">{{ post.primary_author.name }}</a></span>
-      <span class="meta__tags">{% if post.tags %}Tagged: {% for tag in post.tags %}<a href="{{ tag.url }}">{{ tag.name }}</a> {% endfor %}{% endif %}</span>
-      <time class="meta__timestamp">Posted at {{ post.published_at.toUTCString() }}</time>
-    </small>
-    {{ content | safe }}
-  </div>
+    <article class="content">
+        {% if post.feature_image %}
+            <figure class="post-feature-image">
+                <img src="{{ post.feature_image }}" alt="{{ title }}">
+            </figure>
+        {% endif %}
+        <section class="post-full-content">
+            <h1 class="content-title">{{ title }}</h1>
+            <section class="content-body load-external-scripts">
+                {{ content | safe }}
+            </section>
+        </section>
+    </article>
 {% endblock %}
