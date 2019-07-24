@@ -1,15 +1,16 @@
 {% macro icon(props) %}
 <svg
-  width="{{ props.width if props.width else "16" }}"
-  height="{{ props.height if props.height else "16" }}"
-  class="icon  icon--{{ props.id if props.id else "link" }}"
-  role="img"
-  alt="{{ props.id if props.id else "link" }}"
+    width="{{ props.width if props.width else "16" }}"
+    height="{{ props.height if props.height else "16" }}"
+    class="site-nav-icon  site-nav-icon--{{ props.id if props.id else "link" }}"
+    role="img"
+    alt="{{ props.id if props.id else "link" }}"
+    aria-labelledby="{{ id if id else "link" }}-title"
 >
-  <title>{{ id if id else "link" }}</title>
-  <use
-    xlink:href="#{{ props.id if props.id else "link" }}"
-    fill="{{ color if color else "currentColor" }}"
-  ></use>
+    <title id="{{ id if id else "link" }}-title">{{ id if id else "link" }}</title>
+    <use
+        xlink:href="#{{ props.id if props.id else "link" }}"
+        fill="{{ color if color else "currentColor" }}"
+    ></use>
 </svg>
 {% endmacro %}

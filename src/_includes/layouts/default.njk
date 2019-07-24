@@ -11,9 +11,10 @@
         <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
         <meta name="robots" content="index,follow">
         <meta name="generator" content="Eleventy">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         {% if site.icon %}
-            <link rel="shortcut icon" type="image/png" href="{{ site.icon }}"/>	        {{ site.codeinjection_head | safe if site.codeinjection_head }}
+            <link rel="shortcut icon" type="image/png" href="{{ site.icon }}"/>
         {% endif %}
 
         {%- block seo -%}
