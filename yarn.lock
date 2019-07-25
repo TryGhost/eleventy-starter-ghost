@@ -1596,11 +1596,12 @@ eleventy-plugin-lazyimages@liamfiddler/eleventy-plugin-lazyimages:
     jimp "^0.6.4"
     jsdom "^15.1.1"
 
-eleventy-plugin-local-images@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/eleventy-plugin-local-images/-/eleventy-plugin-local-images-0.2.0.tgz#92c5d87bb2ebb30ea1e1062af03d39956b00bd2f"
-  integrity sha512-l4F8SLzdqx7pXxN0iaRJBSMLxjb86bN2EwqNXap69KUg/jBiP4k7kx7SE9pxT+D+zshwJ8gnhqrU7epdLe2D5A==
+eleventy-plugin-local-images@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/eleventy-plugin-local-images/-/eleventy-plugin-local-images-0.3.0.tgz#0eeffec9b114928385878c38096f9e3c91569034"
+  integrity sha512-B+28DQmJpofnUjdwiM3/3nL9fztceebghDsJpEXOfyoJAVmocVCtNLRCGffur5jVqL2jmJMdhL9fyBa730zxLA==
   dependencies:
+    file-type "^12.0.1"
     fs-extra "^8.1.0"
     jsdom "^15.1.1"
     node-fetch "^2.6.0"
@@ -2068,6 +2069,11 @@ file-exists-dazinatorfork@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/file-exists-dazinatorfork/-/file-exists-dazinatorfork-1.0.2.tgz#cd8d0d85f63e39dc81eceb0b687c44a2cca95c47"
   integrity sha512-r70c72ln2YHzQINNfxDp02hAhbGkt1HffZ+Du8oetWDLjDtFja/Lm10lUaSh9e+wD+7VDvPee0b0C9SAy8pWZg==
+
+file-type@^12.0.1:
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/file-type/-/file-type-12.0.1.tgz#50c6a15025511e3f29e88a796103f80db0bfce7b"
+  integrity sha512-YIs1E51cmqcmgF38ODjy0+M/l5DyfIIy3vngTOujQr/lXqkaSskfBniaZoZ1HVIpa5FTf5e7hCXS4TzxfNGMRQ==
 
 file-type@^9.0.0:
   version "9.0.0"

@@ -38,7 +38,7 @@
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "eleventy-plugin-lazyimages": "liamfiddler/eleventy-plugin-lazyimages",
-    "eleventy-plugin-local-images": "^0.2.0",
+    "eleventy-plugin-local-images": "^0.3.0",
     "html-minifier": "^4.0.0"
   },
   "devDependencies": {

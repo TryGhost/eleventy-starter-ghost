@@ -155,6 +155,7 @@ table {
 }
 img {
   max-width: 100%;
+  height: auto;
 }
 html {
   box-sizing: border-box;
@@ -546,6 +547,14 @@ h6 {
   max-width: 720px;
   margin: 0 auto;
   background: #fff;
+}
+
+.post-full-content figcaption {
+  margin: 1em 3em 0;
+  font-size: 55%;
+  line-height: 1.6em;
+  text-align: center;
+  font-weight: normal;
 }
 
 .post-feature-image img {
