@@ -12,12 +12,12 @@
             {% endif %}
             <div class="site-mast-right">
                 {% if site.twitter %}
-                    <a href="https://twitter.com/{{ site.twitter }}" class="site-nav-item" target="_blank" rel="noopener noreferrer">
+                    <a href="https://twitter.com/{{ site.twitter | replace("@", "") }}" class="site-nav-item" target="_blank" rel="noopener noreferrer">
                         {{ icon({ id: 'twitter' }) }}
                     </a>
                 {% endif %}
                 {% if site.facebook %}
-                    <a href="https://www.facebook.com/ghost" class="site-nav-item" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/{{ site.facebook }}" class="site-nav-item" target="_blank" rel="noopener noreferrer">
                         {{ icon({ id: 'facebook' }) }}
                     </a>
                 {% endif %}
