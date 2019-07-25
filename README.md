@@ -2,7 +2,7 @@
 
 A starter template to build completely static websites with [Ghost](https://ghost.org) & [Eleventy](https://www.11ty.io)
 
-**Demo:** https://eleventy-starter-ghost.netlify.com
+**Demo:** https://eleventy.ghost.org
 
 _Screenshot TBC_
 
@@ -30,7 +30,7 @@ yarn start
 
 You now have a completely static site pulling content from Ghost running as a headless CMS.
 
-By default, the starter will populate content from a default Ghost install located at https://demo.ghost.io.
+By default, the starter will populate content from a default Ghost install located at https://eleventy.ghost.io.
 
 To use your own install, edit the `.env` config file with your credentials. You can find your `contentApiKey` in the "Integrations" screen in Ghost Admin. The minimum required version for Ghost is `2.10.0` in order to use this starter without issues.
 
