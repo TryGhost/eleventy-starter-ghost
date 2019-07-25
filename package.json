@@ -7,7 +7,8 @@
     "start": "yarn run dev",
     "dev": "cross-env ELEVENTY_ENV=dev eleventy --serve",
     "build": "cross-env ELEVENTY_ENV=prod eleventy",
-    "test": "yarn run build"
+    "test": "yarn run build",
+    "lint": "eslint . --ext .js --cache"
   },
   "repository": {
     "type": "git",
@@ -39,5 +40,9 @@
     "eleventy-plugin-lazyimages": "liamfiddler/eleventy-plugin-lazyimages",
     "eleventy-plugin-local-images": "^0.2.0",
     "html-minifier": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-plugin-ghost": "^0.4.0"
   }
 }
