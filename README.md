@@ -4,7 +4,7 @@ A starter template to build completely static websites with [Ghost](https://ghos
 
 **Demo:** https://eleventy.ghost.org
 
-_Screenshot TBC_
+![screenshot](https://user-images.githubusercontent.com/1177460/61880347-a1b4b400-aeec-11e9-869f-846aff028d8e.png)
 
 # Installing
 
