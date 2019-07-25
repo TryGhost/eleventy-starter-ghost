@@ -4,7 +4,7 @@ A starter template to build completely static websites with [Ghost](https://ghos
 
 **Demo:** https://eleventy.ghost.org
 
-![screenshot](https://user-images.githubusercontent.com/1177460/61880347-a1b4b400-aeec-11e9-869f-846aff028d8e.png)
+![screenshot](https://user-images.githubusercontent.com/1177460/61880744-5b138980-aeed-11e9-9d8e-07c0b3c03cc5.png)
 
 # Installing
 
