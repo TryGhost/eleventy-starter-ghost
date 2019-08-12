@@ -1,7 +1,9 @@
 {% macro card(post) %}
     <a class="post-card{% if post.featured %}  post-card-featured{% endif %}" href="{{ post.url }}">
         <header class="post-card-header">
-            <img class="post-card-image" src="{{ post.feature_image }}" alt="{{ post.title }}">
+            {% if post.feature_image %}
+                <img class="post-card-image" src="{{ post.feature_image }}" alt="{{ post.title }}">
+            {% endif %}
             <div class="post-card-tags">
                 {% if post.tags %}{% for tag in post.tags %}{{ tag.name }} {% endfor %}{% endif %}
             </div>
