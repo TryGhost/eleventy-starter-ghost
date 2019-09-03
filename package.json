@@ -39,7 +39,7 @@
     "dotenv": "^8.0.0",
     "eleventy-plugin-lazyimages": "liamfiddler/eleventy-plugin-lazyimages",
     "eleventy-plugin-local-images": "^0.3.0",
-    "eslint-utils": "1.4.1",
+    "eslint-utils": "1.4.2",
     "html-minifier": "^4.0.0"
   },
   "devDependencies": {
