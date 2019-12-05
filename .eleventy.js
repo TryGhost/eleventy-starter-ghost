@@ -96,14 +96,13 @@ module.exports = function(config) {
         console.error(err);
       });
 
-    collection.map(post => {
+    collection.forEach(post => {
       post.url = stripDomain(post.url);
       post.primary_author.url = stripDomain(post.primary_author.url);
       post.tags.map(tag => (tag.url = stripDomain(tag.url)));
 
       // Convert publish date into a Date object
       post.published_at = new Date(post.published_at);
-      return post;
     });
 
     // Bring featured post to the top of the list
@@ -133,7 +132,7 @@ module.exports = function(config) {
       });
 
     // Attach posts to their respective authors
-    collection.map(async author => {
+    collection.forEach(async author => {
       const authorsPosts = posts.filter(post => {
         post.url = stripDomain(post.url);
         return post.primary_author.id === author.id;
@@ -141,8 +140,6 @@ module.exports = function(config) {
       if (authorsPosts.length) author.posts = authorsPosts;
 
       author.url = stripDomain(author.url);
-
-      return author;
     });
 
     return collection;
@@ -170,7 +167,7 @@ module.exports = function(config) {
       });
 
     // Attach posts to their respective tags
-    collection.map(async tag => {
+    collection.forEach(async tag => {
       const taggedPosts = posts.filter(post => {
         post.url = stripDomain(post.url);
         return post.primary_tag && post.primary_tag.slug === tag.slug;
@@ -178,8 +175,6 @@ module.exports = function(config) {
       if (taggedPosts.length) tag.posts = taggedPosts;
 
       tag.url = stripDomain(tag.url);
-
-      return tag;
     });
 
     return collection;
