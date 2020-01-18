@@ -691,6 +691,10 @@ h6 {
   opacity: 1;
 }
 
+.site-nav-right .site-nav-button {
+    margin-left: .3rem;
+}
+
 .site-nav-icon {
   height: 15px;
   margin: -5px 0 0;
