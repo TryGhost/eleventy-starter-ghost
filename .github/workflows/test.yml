@@ -1,0 +1,24 @@
+name: Test
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'renovate/*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/'))
+    strategy:
+      matrix:
+        node: [ 10, 12 ]
+    env:
+      FORCE_COLOR: 1
+    name: Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: yarn
+      - run: yarn test
