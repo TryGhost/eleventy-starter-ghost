@@ -29,18 +29,18 @@ module.exports = function(config) {
   config.addPlugin(pluginRSS);
 
   // Apply performance attributes to images
-  config.addPlugin(lazyImages, {
-    cacheFile: ""
-  });
+  // config.addPlugin(lazyImages, {
+  //   cacheFile: ""
+  // });
 
   // Copy images over from Ghost
-  config.addPlugin(localImages, {
-    distPath: "dist",
-    assetPath: "/assets/images",
-    selector: "img",
-    attribute: "data-src", // Lazy images attribute
-    verbose: false
-  });
+  // config.addPlugin(localImages, {
+  //   distPath: "dist",
+  //   assetPath: "/assets/images",
+  //   selector: "img",
+  //   attribute: "data-src", // Lazy images attribute
+  //   verbose: false
+  // });
 
   // Inline CSS
   config.addFilter("cssmin", code => {
