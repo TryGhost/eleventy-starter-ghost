@@ -31,19 +31,19 @@
   "homepage": "https://github.com/TryGhost/eleventy-starter-ghost#readme",
   "dependencies": {
     "@11ty/eleventy": "^0.11.0",
-    "@11ty/eleventy-plugin-rss": "^1.0.6",
-    "@tryghost/content-api": "^1.2.5",
-    "@tryghost/helpers": "^1.1.6",
-    "clean-css": "^4.2.1",
-    "cross-env": "^7.0.0",
-    "dotenv": "^8.0.0",
-    "eleventy-plugin-lazyimages": "liamfiddler/eleventy-plugin-lazyimages",
+    "@11ty/eleventy-plugin-rss": "^1.0.7",
+    "@tryghost/content-api": "^1.4.1",
+    "@tryghost/helpers": "^1.1.27",
+    "clean-css": "^4.2.3",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "eleventy-plugin-lazyimages": "^1.1.1",
     "eleventy-plugin-local-images": "^0.3.0",
     "eslint-utils": "2.0.0",
     "html-minifier": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "6.8.0",
-    "eslint-plugin-ghost": "1.4.1"
+    "eslint-plugin-ghost": "^1.4.1"
   }
 }
