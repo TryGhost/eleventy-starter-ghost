@@ -18,14 +18,24 @@
 {% endblock %}
 
 {%- block seo -%}
+    <!-- Facebook OpenGraph -->
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title }} – {{ site.title }}">
+    <meta property="og:description" content="{{ content }}">
+    <meta property="og:url" content="{{ site.url + page.url }}">
+    <meta property="og:image" content="{{ author.profile_image }}">
+    <meta property="og:locale" content="{{ site.lang }}">
+    <meta property="article:author" content="{{ site.url }}">
+
     <!--Twitter Card-->
-    <meta name="twitter:site" content="{{ site.twitter }}">
-    <meta name="twitter:creator" content="{{ author.twitter }}">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="{{ site.url + page.url }}">
     <meta name="twitter:title" content="{{ title }} – {{ site.title }}">
     <meta name="twitter:description" content="{{ content }}">
+    <meta name="twitter:url" content="{{ site.url + page.url }}">
     <meta name="twitter:image" content="{{ author.profile_image }}">
+    <meta name="twitter:site" content="{{ site.twitter }}">
+    <meta name="twitter:creator" content="{{ author.twitter }}">
 
     <!--Schema-->
     <link rel="author" href="{{ author.website }}">
@@ -33,14 +43,4 @@
     <meta itemprop="name" content="{{ title }} – {{ site.title }}">
     <meta itemprop="description" content="{{ content }}">
     <meta itemprop="image" content="{{ author.profile_image }}">
-
-    <!-- Facebook OpenGraph -->
-    <meta property="og:url" content="{{ site.url + page.url }}">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ title }} – {{ site.title }}">
-    <meta property="og:image" content="{{ author.profile_image }}">
-    <meta property="og:description" content="{{ content }}">
-    <meta property="og:site_name" content="{{ site.title }}">
-    <meta property="og:locale" content="{{ site.lang }}">
-    <meta property="article:author" content="{{ site.url }}">
 {%- endblock -%}
