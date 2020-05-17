@@ -180,6 +180,16 @@ module.exports = function(config) {
     return collection;
   });
 
+  // Add shortcode for date format
+  config.addShortcode("formatDate", function(date) {
+    date = new Date(date);
+    var day = date.toLocaleDateString("en-US", { day: 'numeric' });
+    var month = date.toLocaleDateString("en-US", { month: 'short' });
+    var year = date.toLocaleDateString("en-US", { year: 'numeric' });
+    var format_date = day + ' ' + month + ' ' + year;
+    return format_date;
+  });
+
   // Display 404 page in BrowserSnyc
   config.setBrowserSyncConfig({
     callbacks: {

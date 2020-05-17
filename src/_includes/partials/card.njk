@@ -41,7 +41,7 @@
                 </ul>
                 <div class="post-card-byline-content">
                     <span><a href="{{ post.primary_author.url }}">{{ post.primary_author.name }}</a></span>
-                    <span class="post-card-byline-date">{{ post.html | safe | getReadingTime }} min read</span>
+                    <span class="post-card-byline-date"><time datetime="{{ post.published_at }}">{% formatDate post.published_at %}</time> <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read</span>
                 </div>
             </footer>
 
