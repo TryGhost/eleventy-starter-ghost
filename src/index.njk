@@ -13,7 +13,7 @@ pagination:
 {% block content %}
     <section class="post-feed">
         {% for post in posts %}
-            {{ card(post) }}
+            {{ card(post, loop.index0) }}
         {% endfor %}
     </section>
 
