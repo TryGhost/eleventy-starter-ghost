@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang }}" class="no-js">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>
             {%- if title -%}
                 {{ title }} – {{ site.title }}
@@ -8,45 +10,46 @@
                 {{ site.title }} – {{ site.description }}
             {%- endif -%}
         </title>
-        <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
-        <meta name="robots" content="index,follow">
-        <meta name="generator" content="Eleventy">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/css/screen.css?v=2a17bb3c34">
         {% if site.icon %}
             <link rel="shortcut icon" type="image/png" href="{{ site.icon }}"/>
         {% endif %}
+        <link rel="canonical" href="{{ site.url + page.url }}">
+        <meta name="referrer" content="no-referrer-when-downgrade">
 
         {%- block seo -%}
-            <!--Twitter Card-->
-            <meta name="twitter:site" content="{{ site.twitter }}">
-            <meta name="twitter:creator" content="{{ site.twitter }}">
-            <meta name="twitter:card" content="summary_large_image">
-            <meta name="twitter:url" content="{{ site.url + page.url }}">
-            <meta name="twitter:title" content="{{ title + " – " + site.title if title else title }}">
-            <meta name="twitter:description" content="{{ site.description }}">
-            <meta name="twitter:image" content="{{ site.cover_image }}">
+        <!-- Facebook OpenGraph -->
+        <meta property="og:site_name" content="{{ site.title }}">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ title + " – " + site.title if title else title }}">
+        <meta property="og:url" content="{{site.url + page.url}}">
+        <meta property="og:image" content="{{ site.cover_image }}">
+        <meta property="og:description" content="{{ site.description }}">
+        <meta property="og:locale" content="{{ site.lang }}">
+        <meta property="article:author" content="{{ site.url }}">
 
-            <!--Schema-->
-            <link rel="author" href="{{ site.url }}">
-            <link rel="publisher" href="{{ site.url }}">
-            <meta itemprop="name" content="{{ title + " – " + site.title if title else title }}">
-            <meta itemprop="description" content="{{ site.description }}">
-            <meta itemprop="image" content="{{ site.cover_image }}">
+        <!--Twitter Card-->
+        <meta name="twitter:site" content="{{ site.twitter }}">
+        <meta name="twitter:creator" content="{{ site.twitter }}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="{{ site.url + page.url }}">
+        <meta name="twitter:title" content="{{ title + " – " + site.title if title else title }}">
+        <meta name="twitter:description" content="{{ site.description }}">
+        <meta name="twitter:image" content="{{ site.cover_image }}">
 
-            <!-- Facebook OpenGraph -->
-            <meta property="og:url" content="{{site.url + page.url}}">
-            <meta property="og:type" content="website">
-            <meta property="og:title" content="{{ title + " – " + site.title if title else title }}">
-            <meta property="og:image" content="{{ site.cover_image }}">
-            <meta property="og:description" content="{{ site.description }}">
-            <meta property="og:site_name" content="{{ site.title }}">
-            <meta property="og:locale" content="{{ site.lang }}">
-            <meta property="article:author" content="{{ site.url }}">
+        <!--Schema-->
+        <link rel="author" href="{{ site.url }}">
+        <link rel="publisher" href="{{ site.url }}">
+        <meta itemprop="name" content="{{ title + " – " + site.title if title else title }}">
+        <meta itemprop="description" content="{{ site.description }}">
+        <meta itemprop="image" content="{{ site.cover_image }}">
         {%- endblock -%}
 
-        {% set css %}{% include "css/styles.css" %}{% endset %}
-        <style>{{ css | cssmin | safe }}</style>
+        <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+        <meta name="robots" content="index,follow">
+        <meta name="generator" content="Eleventy">
 
         <script>document.documentElement.classList.remove('no-js');</script>
 
