@@ -1,38 +1,7 @@
-{% from "partials/icon.njk" import icon %}
-
-<header class="site-head"{% if site.cover_image %} style="background-image: url('{{ site.cover_image }}')"{% endif %}>
-    <div class="container">
-        <div class="site-mast">
-            {% if site.logo %}
-                <div class="site-mast-left">
-                    <a {% if page.url == "/" %}aria-current="page"{% endif %} href="{{ site.url }}">
-                        <img class="site-logo" src="{{ site.logo }}" alt="{{ site.title }}">
-                    </a>
-                </div>
-            {% endif %}
-            <div class="site-mast-right">
-                {% if site.twitter %}
-                    <a href="https://twitter.com/{{ site.twitter | replace("@", "") }}" class="site-nav-item" target="_blank" rel="noopener noreferrer">
-                        {{ icon({ id: 'twitter' }) }}
-                    </a>
-                {% endif %}
-                {% if site.facebook %}
-                    <a href="https://www.facebook.com/{{ site.facebook }}" class="site-nav-item" target="_blank" rel="noopener noreferrer">
-                        {{ icon({ id: 'facebook' }) }}
-                    </a>
-                {% endif %}
-                <a class="site-nav-item" href="https://feedly.com/i/subscription/feed/{{ site.url }}/rss/" target="_blank" rel="noopener noreferrer">
-                    {{ icon({ id: 'rss' }) }}
-                </a>
-            </div>
+<header class="site-header">
+    <div class="outer site-nav-main">
+        <div class="inner">
+            {% include 'partials/navigation.njk' %}
         </div>
-        {% if page.url == '/' %}
-            <div class="site-banner">
-                <h1 class="site-banner-title">{{ site.title }}</h1>
-                <p class="site-banner-desc">{{ site.description }}</p>
-            </div>
-        {% endif %}
-
-        {% include 'partials/navigation.njk' %}
     </div>
 </header>
