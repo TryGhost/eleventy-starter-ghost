@@ -3,6 +3,8 @@
 
 {% set title = author.name %}
 
+{% block body_class %}author-template{% endblock %}
+
 {% block content %}
     {% include "partials/author-header.njk" %}
 

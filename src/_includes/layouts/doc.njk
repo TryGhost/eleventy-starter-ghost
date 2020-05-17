@@ -4,6 +4,8 @@
 {% set codeinjection_head = doc.codeinjection_head %}
 {% set codeinjection_foot = doc.codeinjection_foot %}
 
+{% block body_class %}page-template{% endblock %}
+
 {% block content %}
     <article class="content">
         {% if doc.feature_image %}

@@ -3,6 +3,8 @@
 
 {% set title = tag.name %}
 
+{% block body_class %}tag-template{% endblock %}
+
 {% block content %}
     <header class="tag-header">
         <h1>{{ tag.name }}</h1>
