@@ -1,0 +1,17 @@
+<header class="site-home-header">
+    <div class="outer site-header-background">
+        <div class="inner">
+            {% include 'partials/navigation.njk' %}
+            <div class="site-header-content">
+                <h1 class="site-title">
+                    {% if site.logo %}
+                        <img class="site-logo" src="{{ site.logo }}" alt="{{ site.title }}" />
+                    {% else %}
+                        {{ site.title }}
+                    {% endif %}
+                </h1>
+                <h2 class="site-description">The professional publishing platform</h2>
+            </div>
+        </div>
+    </div>
+</header>

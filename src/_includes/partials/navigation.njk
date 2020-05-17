@@ -1,20 +1,39 @@
+{% from "partials/icon.njk" import icon %}
+
 <nav class="site-nav">
     {% if site.navigation %}
-        <div class="site-nav-left">
-            {% for item in site.navigation %}
-                <a {% if page.url == item.url %}aria-current="page"{% endif %} class="site-nav-item" href="{{ item.url }}">
-                    {{ item.label }}
-                </a>
-            {% endfor %}
+        <div class="site-nav-left-wrapper">
+            <div class="site-nav-left">
+                <div class="site-nav-content">
+                    <ul class="nav" role="menu">
+                        {% for item in site.navigation %}
+                            <li class="nav-item" role="menuitem">
+                                <a href="{{ item.url }}">
+                                    {{ item.label }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     {% endif %}
-    {% if collections.docs %}
-        <div class="site-nav-right">
-            {% for doc in collections.docs %}
-                <a {% if page.url == doc.url %}aria-current="page"{% endif %} class="site-nav-button{% if doc.featured %}  site-nav-button-featured{% endif %}" href="{{ doc.url }}">
-                    {{ doc.meta_title if doc.meta_title else doc.title }}
+    <div class="site-nav-right">
+        {% if site.secondary_navigation | length %}
+            {% for nav_item in site.secondary_navigation %}
+                <a href="{{ nav_item.url }}">
+                    {{ nav_item.label }}
                 </a>
             {% endfor %}
-        </div>
-    {% endif %}
+        {% else %}
+            <div class="social-links">
+                {% if site.facebook %}
+                    <a class="social-link social-link-fb" href="https://www.facebook.com/{{ site.facebook }}" title="Facebook" target="_blank" rel="noopener">{% include "partials/icon-facebook.njk" %}</a>
+                {% endif %}
+                {% if site.twitter %}
+                    <a class="social-link social-link-tw" href="https://twitter.com/{{ site.twitter }}" title="Twitter" target="_blank" rel="noopener">{% include "partials/icon-twitter.njk" %}</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
 </nav>

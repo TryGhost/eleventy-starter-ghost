@@ -57,23 +57,22 @@
         {{ codeinjection_head | safe if codeinjection_head }}
     </head>
     <body class="{% block body_class %}home_template{% endblock %}">
-        {% include "partials/icons.njk" %}
-        <div class="viewport">
+        <div class="site-wrapper">
 
-            <div class="viewport-top">
+            {% if page.url == "/" %}
+                {% include "partials/header-home.njk" %}
+            {% else %}
                 {% include "partials/header.njk" %}
+            {% endif %}
 
-                <main class="site-main">
-                    <div class="container">
-                        {% block content %}
-                        {% endblock content %}
-                    </div>
-                </main>
-            </div>
+            <main id="site-main" class="site-main outer">
+                <div class="inner">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </main>
 
-            <div class="viewport-bottom">
-                {% include "partials/footer.njk" %}
-            </div>
+            {% include "partials/footer.njk" %}
 
             {{ site.codeinjection_foot | safe if site.codeinjection_foot }}
             {{ codeinjection_foot | safe if codeinjection_foot }}
