@@ -59,11 +59,9 @@
     <body class="{% block body_class %}home-template{% endblock %}">
         <div class="site-wrapper">
 
-            {% if page.url == "/" %}
-                {% include "partials/header-home.njk" %}
-            {% else %}
+            {% block header %}
                 {% include "partials/header.njk" %}
-            {% endif %}
+            {% endblock header %}
 
             <main id="site-main" class="site-main outer">
                 <div class="inner">

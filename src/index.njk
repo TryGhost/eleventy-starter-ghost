@@ -10,6 +10,10 @@ pagination:
 
 {% set title = "Posts" %}
 
+{% block header %}
+    {% include "partials/header-home.njk" %}
+{% endblock header %}
+
 {% block content %}
     <section class="post-feed">
         {% for post in posts %}
