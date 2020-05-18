@@ -5,10 +5,12 @@
 
 {% block body_class %}author-template{% endblock %}
 
-{% block content %}
-    {% include "partials/author-header.njk" %}
+{% block header %}
+    {% include "partials/header-author.njk" %}
+{% endblock header %}
 
-    <section class="post-feed">
+{% block content %}
+    <div class="post-feed">
         {% if author.posts %}
             {% for post in author.posts %}
                 {{ card(post) }}
@@ -16,7 +18,7 @@
         {% else %}
             <p>No posts to be found</p>
         {% endif %}
-    </section>
+    </div>
 {% endblock %}
 
 {%- block seo -%}
