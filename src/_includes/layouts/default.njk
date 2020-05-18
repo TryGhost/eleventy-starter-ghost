@@ -71,6 +71,12 @@
             </main>
 
             {% include "partials/footer.njk" %}
+            {% include "partials/scripts-subscribe.njk" %}
+
+            <!--Scripts-->
+            {% include "partials/scripts-fitvids.njk" %}
+            {% include "partials/subscribe.njk" %}
+            {% block scripts %}{% endblock %}
 
             {{ site.codeinjection_foot | safe if site.codeinjection_foot }}
             {{ codeinjection_foot | safe if codeinjection_foot }}
