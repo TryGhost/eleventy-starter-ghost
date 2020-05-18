@@ -31,7 +31,7 @@
                         <div class="author-name-tooltip">
                             {{ post.primary_author.name }}
                         </div>
-                        <a href="{{ post.primary_author.url }}" class="static-avatar">
+                        <a href="{{ site.url}}/author/{{ post.primary_author.slug }}/" class="static-avatar">
                             <img
                                 class="author-profile-image"
                                 src="{{ post.primary_author.profile_image }}"
@@ -40,7 +40,7 @@
                     </li>
                 </ul>
                 <div class="post-card-byline-content">
-                    <span><a href="{{ post.primary_author.url }}">{{ post.primary_author.name }}</a></span>
+                    <span><a href="{{ site.url}}/author/{{ post.primary_author.slug }}/">{{ post.primary_author.name }}</a></span>
                     <span class="post-card-byline-date"><time datetime="{% formatDate post.published_at, "ISO" %}">{% formatDate post.published_at, "D MMM YYYY" %}</time> <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read</span>
                 </div>
             </footer>
