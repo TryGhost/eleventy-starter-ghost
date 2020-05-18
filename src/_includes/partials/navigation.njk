@@ -4,6 +4,11 @@
     {% if site.navigation %}
         <div class="site-nav-left-wrapper">
             <div class="site-nav-left">
+                {% if site.logo %}
+                    <a class="site-nav-logo" href="{{ site.url }}"><img src="{{ site.logo }}" alt="{{ site.title }}"></a>
+                {% else %}
+                    <a class="site-nav-logo" href="{{ site.url }}">{{ site.title }}</a>
+                {% endif %}
                 <div class="site-nav-content">
                     <ul class="nav" role="menu">
                         {% for item in site.navigation %}
@@ -20,11 +25,15 @@
     {% endif %}
     <div class="site-nav-right">
         {% if site.secondary_navigation | length %}
-            {% for nav_item in site.secondary_navigation %}
-                <a href="{{ nav_item.url }}">
-                    {{ nav_item.label }}
-                </a>
-            {% endfor %}
+            <ul class="nav" role="menu">
+                {% for nav_item in site.secondary_navigation %}
+                    <li class="nav-item" role="menuitem">
+                        <a href="{{ nav_item.url }}">
+                            {{ nav_item.label }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
         {% else %}
             <div class="social-links">
                 {% if site.facebook %}
