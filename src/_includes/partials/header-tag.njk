@@ -1,0 +1,25 @@
+{% set posts_quantity = tag.posts | length %}
+
+<header class="site-archive-header">
+    <div class="outer site-nav-main">
+        <div class="inner">
+            {% include 'partials/navigation.njk' %}
+        </div>
+    </div>
+    <div class="outer site-header-background no-image">
+        <div class="inner site-header-content">
+            <h1 class="site-title">{{ tag.name }}</h1>
+            <h2 class="site-description">
+                {% if tag.description %}
+                {{ tag.description }}
+                {% else %}
+                    {% if posts_quantity %}
+                        {{ "A collection of " + posts_quantity + " posts" if posts_quantity > 1 else "One post" }}
+                    {% else %}
+                        No posts
+                    {% endif %}
+                {% endif %}
+            </h2>
+        </div>
+    </div>
+</header>

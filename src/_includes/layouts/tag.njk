@@ -5,12 +5,12 @@
 
 {% block body_class %}tag-template{% endblock %}
 
+{% block header %}
+    {% include "partials/header-tag.njk" %}
+{% endblock header %}
+
 {% block content %}
-    <header class="tag-header">
-        <h1>{{ tag.name }}</h1>
-        <p>{{ content | safe }}</p>
-    </header>
-    <section class="post-feed">
+    <div class="post-feed">
         {% if tag.posts %}
             {% for post in tag.posts %}
                 {{ card(post) }}
@@ -18,7 +18,7 @@
         {% else %}
             <p>No posts to be found</p>
         {% endif %}
-    </section>
+    </div>
 {% endblock %}
 
 {%- block seo -%}
