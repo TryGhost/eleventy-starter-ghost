@@ -1,0 +1,32 @@
+{#
+Wow what the hell is going on in here even?
+
+- [GitHub: Casper theme: header-background.hbs](https://github.com/TryGhost/Casper/blob/master/partials/header-background.hbs)
+
+Ok so, several templates use this big header with a giant BG image. Nice idea, but big images
+have a heavy impact on performance, so it's a good idea to make them responsive.
+
+For this Eleventy implementation, it might be possible to add responsive images:
+
+- [Responsive images in Eleventy](https://jamesdoc.com/blog/2018/rwd-img-11ty/)
+- [Degulpification](https://jamesdoc.com/blog/2020/degulpification/)
+
+If the template in question has a background image, then we render responsive image styles
+for it, and apply those styles to the <header> tag. Else, we just output a <header> tag
+with a `no-image` class so we can style it accordingly.
+#}
+
+{% if site.cover_image %}
+
+<style type="text/css">
+    .responsive-header-img {
+        background-image: url({{ site.cover_image }});
+    }
+</style>
+<div class="outer site-header-background responsive-header-img">
+
+{% else %}
+
+<div class="outer site-header-background no-image">
+
+{% endif %}
