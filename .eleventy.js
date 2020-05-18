@@ -10,6 +10,9 @@ const ghostContentAPI = require("@tryghost/content-api");
 const htmlMinTransform = require("./src/transforms/html-min-transform.js");
 const moment = require("moment");
 
+// Retrieve images. Set to false for faster build times.
+let getImages = true;
+
 // Init Ghost API
 const api = new ghostContentAPI({
   url: process.env.GHOST_API_URL,
@@ -30,18 +33,22 @@ module.exports = function(config) {
   config.addPlugin(pluginRSS);
 
   // Apply performance attributes to images
-  // config.addPlugin(lazyImages, {
-  //   cacheFile: ""
-  // });
+  if (getImages) {
+    config.addPlugin(lazyImages, {
+      cacheFile: ""
+    });
+  }
 
   // Copy images over from Ghost
-  // config.addPlugin(localImages, {
-  //   distPath: "dist",
-  //   assetPath: "/assets/images",
-  //   selector: "img",
-  //   attribute: "data-src", // Lazy images attribute
-  //   verbose: false
-  // });
+  if (getImages) {
+    config.addPlugin(localImages, {
+      distPath: "dist",
+      assetPath: "/assets/images",
+      selector: "img",
+      attribute: "data-src", // Lazy images attribute
+      verbose: false
+    });
+  }
 
   // Inline CSS
   config.addFilter("cssmin", code => {
