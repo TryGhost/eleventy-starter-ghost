@@ -13,7 +13,7 @@
 
             {% if post.primary_tag %}
                 <section class="post-full-tags">
-                    <a href="{{ post.primary_tag.url }}">{{ post.primary_tag.name }}</a>
+                    <a href="{{ site.url }}/tag/{{ post.primary_tag.slug }}/">{{ post.primary_tag.name }}</a>
                 </section>
             {% endif %}
 
