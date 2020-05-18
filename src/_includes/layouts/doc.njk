@@ -7,18 +7,24 @@
 {% block body_class %}page-template{% endblock %}
 
 {% block content %}
-    <article class="content">
+    <article class="post-full{% if post.feature_image %}{% else %} no-image{% endif %}">
+
+        <header class="post-full-header">
+            <h1 class="post-full-title">{{ title }}</h1>
+        </header>
+
         {% if doc.feature_image %}
-            <figure class="post-feature-image">
-                <img src="{{ doc.feature_image }}" alt="{{ title }}">
-            </figure>
+        <figure class="post-full-image">
+            <img src="{{ doc.feature_image }}" alt="{{ doc.title }}" />
+        </figure>
         {% endif %}
+
         <section class="post-full-content">
-            <h1 class="content-title">{{ title }}</h1>
-            <section class="content-body load-external-scripts">
+            <div class="post-content">
                 {{ content | safe }}
-            </section>
+            </div>
         </section>
+
     </article>
 {% endblock %}
 
