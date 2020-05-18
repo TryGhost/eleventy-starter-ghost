@@ -8,6 +8,7 @@ const lazyImages = require("eleventy-plugin-lazyimages");
 const ghostContentAPI = require("@tryghost/content-api");
 
 const htmlMinTransform = require("./src/transforms/html-min-transform.js");
+const moment = require("moment");
 
 // Init Ghost API
 const api = new ghostContentAPI({
@@ -181,12 +182,13 @@ module.exports = function(config) {
   });
 
   // Add shortcode for date format
-  config.addShortcode("formatDate", function(date) {
+  config.addShortcode("formatDate", function(date, format) {
     date = new Date(date);
-    var day = date.toLocaleDateString("en-US", { day: 'numeric' });
-    var month = date.toLocaleDateString("en-US", { month: 'short' });
-    var year = date.toLocaleDateString("en-US", { year: 'numeric' });
-    var format_date = day + ' ' + month + ' ' + year;
+    if ( format == "ISO") {
+      var format_date = moment(date).toISOString();
+    } else {
+      var format_date = moment(date).format(format);
+    }
     return format_date;
   });
 
