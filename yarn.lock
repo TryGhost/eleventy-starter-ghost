@@ -1629,10 +1629,10 @@ eleventy-plugin-lazyimages@liamfiddler/eleventy-plugin-lazyimages:
     jimp "^0.6.4"
     jsdom "^15.1.1"
 
-eleventy-plugin-local-images@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/eleventy-plugin-local-images/-/eleventy-plugin-local-images-0.3.0.tgz#0eeffec9b114928385878c38096f9e3c91569034"
-  integrity sha512-B+28DQmJpofnUjdwiM3/3nL9fztceebghDsJpEXOfyoJAVmocVCtNLRCGffur5jVqL2jmJMdhL9fyBa730zxLA==
+eleventy-plugin-local-images@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/eleventy-plugin-local-images/-/eleventy-plugin-local-images-0.4.0.tgz#18a80bc1b5966cdd2a2204f4c5bc119a70ef28c1"
+  integrity sha512-goxbQdBI1jbvksHyLzBegDkjJKi6LawuYiUavaZgj5eDrOVok2l2WpQR35zIBtMn/4qwUC+VEC7/FYQ7Aw9kuw==
   dependencies:
     file-type "^12.0.1"
     fs-extra "^8.1.0"
