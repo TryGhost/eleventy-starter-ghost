@@ -1,6 +1,7 @@
 ---
 permalink: feed.xml
 eleventyExcludeFromCollections: true
+date: Last Modified
 metadata:
   author:
     email: myemailaddress@example.com
@@ -11,8 +12,10 @@ metadata:
   <subtitle>{{ site.description }}</subtitle>
   <link href="{{ site.url + page.url }}" rel="self"/>
   <link href="{{ site.url }}"/>
-  <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
-  <id>{{ site.url }}</id>
+  {%- for post in collections.posts.slice(0,1) | sort(true, false, 'updated_at') %}
+  <updated>{{ post.updated_at }}</updated>
+  {%- endfor %}
+  <id>{{ site.url }}/</id>
   <author>
     <name>{{ collections.authors[0].name }}</name>
   </author>
@@ -20,9 +23,9 @@ metadata:
   <entry>
     <title>{{ post.title }}</title>
     <link href="{{ site.url + post.url }}"/>
-    <updated>{{ post.date | rssDate }}</updated>
-    <id>{{ absolutePostUrl }}</id>
-    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+    <updated>{{ post.updated_at }}</updated>
+    <id>{{ site.url + post.url }}</id>
+    <content type="html">{{ post.html | htmlToAbsoluteUrls(site.url + page.url) }}</content>
   </entry>
   {%- endfor %}
 </feed>
