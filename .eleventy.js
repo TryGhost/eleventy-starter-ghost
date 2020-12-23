@@ -30,7 +30,8 @@ module.exports = function(config) {
 
   // Apply performance attributes to images
   config.addPlugin(lazyImages, {
-    cacheFile: ""
+    cacheFile: "",
+    preferNativeLazyLoad: true,
   });
 
   // Copy images over from Ghost
