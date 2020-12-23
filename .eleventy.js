@@ -27,11 +27,16 @@ module.exports = function(config) {
 
   // Assist RSS feed template
   config.addPlugin(pluginRSS);
-
+  
+  const useFormatApp = (src) => {
+    const result = `https://theformat.app/unsafe/${src}`
+    return result
+  }
   // Apply performance attributes to images
   config.addPlugin(lazyImages, {
     cacheFile: "",
     preferNativeLazyLoad: true,
+    transformImgPath: useFormatApp
   });
 
   // Copy images over from Ghost
