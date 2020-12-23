@@ -36,7 +36,7 @@ module.exports = function(config) {
   config.addPlugin(lazyImages, {
     cacheFile: "",
     preferNativeLazyLoad: true,
-    transformImgPath: useFormatApp
+    transformImgPath: (imgPath) => (`https://theformat.app/unsafe/${imgPath}`)
   });
 
   // Copy images over from Ghost
