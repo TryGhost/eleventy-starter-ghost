@@ -36,7 +36,7 @@
     "@tryghost/helpers": "^1.1.6",
     "clean-css": "^4.2.1",
     "cross-env": "^7.0.0",
-    "dotenv": "^8.0.0",
+    "dotenv": "^10.0.0",
     "eleventy-plugin-lazyimages": "liamfiddler/eleventy-plugin-lazyimages",
     "eleventy-plugin-local-images": "^0.4.0",
     "eslint-utils": "3.0.0",
