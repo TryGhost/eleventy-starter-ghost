@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/TryGhost/eleventy-starter-ghost#readme",
   "dependencies": {
-    "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy": "^0.12.0",
     "@11ty/eleventy-plugin-rss": "^1.1.1",
     "@tryghost/content-api": "^1.4.4",
     "@tryghost/helpers": "^1.1.6",
