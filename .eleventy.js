@@ -61,13 +61,37 @@ module.exports = function(config) {
   // Don't ignore the same files ignored in the git repo
   config.setUseGitIgnore(false);
 
+  // Get all pages tagged with 'footer'
+  config.addCollection("footers", async function(collection) {
+    collection = await api.pages
+      .browse({
+        include: "authors",
+        limit: "all",
+        filter: "tag:hash-footer",
+      })
+      .catch(err => {
+        console.error(err);
+      });
+
+    collection.map(footer => {
+      footer.url = stripDomain(footer.url);
+      footer.primary_author.url = stripDomain(footer.primary_author.url);
+
+      // Convert publish date into a Date object
+      footer.published_at = new Date(footer.published_at);
+      return footer;
+    });
+
+    return collection;
+  });
+
   // Get all pages, called 'docs' to prevent
   // conflicting the eleventy page object
   config.addCollection("docs", async function(collection) {
     collection = await api.pages
       .browse({
         include: "authors",
-        limit: "all"
+        limit: "all",
       })
       .catch(err => {
         console.error(err);
@@ -170,7 +194,8 @@ module.exports = function(config) {
     collection.forEach(async tag => {
       const taggedPosts = posts.filter(post => {
         post.url = stripDomain(post.url);
-        return post.primary_tag && post.primary_tag.slug === tag.slug;
+        const tagIds = post.tags.map(tag => tag.id);
+        return tagIds && tagIds.includes(tag.id);
       });
       if (taggedPosts.length) tag.posts = taggedPosts;
 

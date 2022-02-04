@@ -8,9 +8,9 @@
                 Ghost
             </a>
         </div>
-        {% if collections.docs %}
+        {% if collections.footers %}
             <div class="site-foot-nav-right">
-                {% for doc in collections.docs %}
+                {% for doc in collections.footers %}
                     <a {% if page.url == doc.url %}aria-current="page"{% endif %}  class="site-foot-nav-item" href="{{ doc.url }}">
                         {{ doc.meta_title if doc.meta_title else doc.title }}
                     </a>
