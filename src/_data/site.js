@@ -6,7 +6,7 @@ const ghostContentAPI = require("@tryghost/content-api");
 const api = new ghostContentAPI({
   url: process.env.GHOST_API_URL,
   key: process.env.GHOST_CONTENT_API_KEY,
-  version: "v2"
+  version: "v4"
 });
 
 // Get all site information
