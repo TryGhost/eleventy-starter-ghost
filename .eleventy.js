@@ -170,8 +170,8 @@ module.exports = function(config) {
     collection.forEach(async tag => {
       const taggedPosts = posts.filter(post => {
         post.url = stripDomain(post.url);
-        return post.primary_tag && post.primary_tag.slug === tag.slug;
-      });
+        const tagIds = post.tags.map(tag => tag.id);
+        return tagIds && tagIds.includes(tag.id);      });
       if (taggedPosts.length) tag.posts = taggedPosts;
 
       tag.url = stripDomain(tag.url);
