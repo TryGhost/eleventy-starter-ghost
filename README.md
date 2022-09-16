@@ -57,6 +57,10 @@ You can disable the default Ghost Handlebars Theme front-end by enabling the `Ma
 yarn build
 ```
 
+### Contact Form
+
+if you want to add a contact form to this theme try [static website forms](https://fabform.io) from fabform.io
+
 # Copyright & License
 
 Copyright (c) 2013-2022 Ghost Foundation - Released under the [MIT license](LICENSE).
