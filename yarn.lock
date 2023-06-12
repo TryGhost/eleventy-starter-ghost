@@ -335,9 +335,9 @@
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
 "@tryghost/content-api@^1.4.4":
-  version "1.11.11"
-  resolved "https://registry.yarnpkg.com/@tryghost/content-api/-/content-api-1.11.11.tgz#c485fd5289135c37b48ab81314099a327f8bcf77"
-  integrity sha512-lAFUrqqeDYmh/1d4EAeBWDTbrlKDrXnh3b/szqzoqa62VRUTYZa4qzBVjRvj5OtLOP250/NoIVDFAI8dsoZA7Q==
+  version "1.11.12"
+  resolved "https://registry.yarnpkg.com/@tryghost/content-api/-/content-api-1.11.12.tgz#023ba0c74788c508b15ed56e1f7dc46c2fe57de4"
+  integrity sha512-q8l4Z5kvY5MzRkBfVZuIJRH5fXgV+RClcVqWBCCcEnlUC0vKVuoTFnwl7Xse6Girz31W6UoFYGSEKvFwvTIXrA==
   dependencies:
     axios "^0.27.0"
 
