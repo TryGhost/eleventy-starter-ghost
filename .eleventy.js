@@ -150,7 +150,8 @@ module.exports = function(config) {
     collection = await api.tags
       .browse({
         include: "count.posts",
-        limit: "all"
+        limit: "all",
+        filter: "visibility:public"
       })
       .catch(err => {
         console.error(err);
