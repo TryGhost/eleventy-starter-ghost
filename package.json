@@ -34,7 +34,7 @@
     "@11ty/eleventy-plugin-rss": "^1.1.1",
     "@tryghost/content-api": "^1.4.4",
     "@tryghost/helpers": "^1.1.6",
-    "clean-css": "^4.2.1",
+    "clean-css": "^5.0.0",
     "cross-env": "^7.0.0",
     "dotenv": "^8.0.0",
     "eleventy-plugin-lazyimages": "liamfiddler/eleventy-plugin-lazyimages",
